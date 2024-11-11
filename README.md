@@ -36,7 +36,7 @@
     <li><a href="#technology-stack">Technology Stack</a></li>
     <li><a href="#version-control-tools">Version Control Tools</a></li>
     <li><a href="#tools">Tools</a></li>
-    <li><a href="#getting-started-&-instakkation">Getting Started & Installation:</a></li>
+    <li><a href="#getting-started--installation">Getting Started & Installation:</a></li>
     <li><a href="#code-coverage">Code Coverage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#developer-support-and-updates">Developer Support and Updates</a></li>
