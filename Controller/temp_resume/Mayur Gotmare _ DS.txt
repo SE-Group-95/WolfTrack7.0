@@ -1,0 +1,65 @@
+Mayur  Prakash  Gotmare  
+Raleigh,  NC 27606  | (919) -559-4572  | gotmaremayur26@gmail.com  | linkedin.com/mayur -gotmare  
+EDUCATION   
+North  Carolina  State  University,  Raleigh,  NC, US Expected May  2025  
+Master  of Computer  Science  (Track in Data Science)  GPA:  4/4 
+Coursework : Computer Networks, Data Analysis,  Database Management,  Algorithms,  Cloud Computing  
+Vishwakarma  Institute  of Information  Technology,  Pune,  MH, India  May 2021  
+Bachelor  of Technology  in Computer  Engineering  GPA:  4/4 
+ 
+TECHNICAL  SKILLS   
+• Languages : Python, C++, Java, HTML, CSS, R, SQL, Scala  
+• Database and Operating Systems : MySQL, MongoDB, Elasticsearch, InfluxDB, Windows, Ubuntu, NoSQL, Linux  
+• Technologies/Frameworks:  Machine Learning, Data Science, Deep Learning, Data Analytics, Computer Vision, Probability, 
+Statistics, Physics -Informed Machine Learning (PINNs, Neural Operator Methods), PyTorch, TensorFlow, Keras, Apache Airflow, 
+Docker, GCP, AWS, MATLAB, Git, Data Vi sualization, Postman, OpenCV, REST API, Agile, CNN, RNN, Graph Neural 
+Networks, Transformer Architectures, Reinforcement Learning, Transfer Learning  
+EXPERIENCE   
+Software  Engineer  Intern , NetApp  | RTP,  NC May 2024 - Present  
+• Automated security controls across 50+ AWS, Azure, and GCP  accounts, leveraging GenAI/GPT models  to strengthen security 
+posture by 30%  
+• Designed a framework for managing engineering service accounts in Active Directory using LDAP, Django, ServiceNow, and 
+RESTful APIs , increasing efficiency by 50%.  
+• Built a real -time data denial pipeline using Google Cloud services (Feeds, Pub/Sub, Cloud Functions), improving firewall 
+compliance by 30% through proactive  monitoring and updating of open ingress rules.  
+ 
+Research Assistant, NCSU| Raleigh, NC  
+• Developed a CNN -LSTM model for predicting Degree of Linear Polarization (DoLP) from sky images, achieving 95% accuracy.  
+• Leveraged CNN for feature extraction, LSTM for modeling temporal dependencies, and OpenCV for extracting canopy data . 
+Software  Engineer , Veritas  Technologies  LLC  | Pune,  India  Jul 2021  - Jul 2023  
+• Developed Predictive Insights, a Python -based AI/ML backend engine with Pytorch & Tensorflow for appliance health forecasting 
+(94% accuracy) and a recommendation engine using regression models.    
+• Designed an inventory processing system leveraging Elasticsearch for real -time search and indexing.  
+• Engineered automated test case generation with AI and Stanford NLP, transforming requirements into 100+ scalable Java test 
+cases, improving test coverage by 40%.  
+• Managed diverse database systems, including MongoDB, SQL, InfluxDB, and Elasticsearch, while overseeing CI/CD pipelines to 
+ensure efficient data integration and deployment processes.  
+Software  Developer  Intern , Veritas  Technologies  LLC |  Pune,  India  Jan 2021  - Jun 2021  
+• Developed  frontend  & backend  framework  using  Vue.js  & Python -Django  for running  desired  test suites  on Virtual  Machines.  
+• Monitored  VM health  with the help  of ansible  and Jenkins pipeline  for running  test suites.  
+Software Engineer  Intern , IDeaS  – A SAS  company |  Pune, India  Jul 2020  - Dec 2020  
+• Spearheaded  Covid -19 Request  Relief  Automation  using  Microsoft  Power Automa te and Power  apps.  
+• Developed  automation  with  Python -Selenium  for Client  Property  Association  in SFDC  and reduced  90%  manual  efforts  . 
+• Automated intervention analysis using PowerBI , generating reports that improved data -driven decision -making by 20% . 
+Research  and Development  Computer Vision  Intern , Trendzlink  Technology  Pvt. Ltd. | Pune,  India  May 2019  - Jul 2019  
+• Completed  “Image  Processing  with Embedded  Environment”  project  involving  CUDA  & TensorFlow  with >95%  accuracy.  
+• Contributed  to various  computer  vision  projects  like defect  detection  for mechanical  parts  using OpenCV .  
+ 
+  Co-founder , Machine Learning Forum, VIIT | Pune, India  
+• Undertook projects and organized workshops and weekly sessions for 200 + students on Python and Machine learning.  
+• Collaborated with NVDIA deep learning institute  for teaching deep learning concepts to students.  
+PROJECTS   
+• Machine Learning for Power Prediction : Pre -processed data and analyzed  various Machine Learning regression models. 
+Developed and forecasted future electricity consumption based on the ARIMA model with a 91% accuracy rate . 
+• Data Analysis and time  series prediction: Utilized data modeling  & pre-processing techniques and PCA  for dimensionality 
+reduction on government data containing types of crimes in L.A. Trained the dataset with various machine learning models and 
+implemented LSTM , achieving 85% accuracy  in predicting future time series trends in crime patterns using PyCharm  IDE 
+• Criminal  Database  using  Facial  Recognition : Created  a criminal  database  and managed  the facial  recognition  component  for data 
+retrieval from MongoDB and MySQL databases. Implemented Facial Recognition software using the Viola -Jones algorithm  in 
+conjunction with neural networks and TensorFlow, achieving an accuracy rate of nearly 89%.  
+• Database Management Systems: Designed and built the  Wolf Parking Management System, for managing parking lots and its 
+users on college campus with JDBC & MariaDB . 
+ 
+PAPER  PUBLICATIONS  
+• Paper Title: Survey of Big Data and their Analytical Frameworks, International Research Journal of Modernization in 
+Engineering Technology & Science (IRJMETS), Volume 4 Issue 8. For details click here.  
