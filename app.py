@@ -609,7 +609,7 @@ def job_search():
 @app.route('/student/job_search/result', methods=['POST'])
 def search():
     job_role = request.form['job_role']
-    adzuna_url = f"https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=170792a8&app_key=4ad22e0b6adaadda41b1c128adbfa12b&what_phrase={job_role}"
+    adzuna_url = f"https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=575e7a4b&app_key=35423835cbd9428eb799622c6081ffed&what_phrase={job_role}"
     try:
         response = requests.get(adzuna_url)
         if response.status_code == 200:
@@ -641,7 +641,7 @@ def find_jobs():
     print(f"Recommended Job Roles: {job_roles}")
 
     job_query = ','.join(job_roles).replace(' ', '%20')
-    adzuna_url = f"https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=170792a8&app_key=4ad22e0b6adaadda41b1c128adbfa12b&what_or={job_query}"
+    adzuna_url = f"https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=575e7a4b&app_key=35423835cbd9428eb799622c6081ffed&what_or={job_query}"
 
     try:
         response = requests.get(adzuna_url)
