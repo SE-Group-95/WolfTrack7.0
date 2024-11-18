@@ -53,7 +53,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI', "sqlite:///dat
 # Set the SECRET_KEY, with a fallback for testing environments
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_testing_secret_key')
 RAPIDAPI_HOST = "jsearch.p.rapidapi.com"
-RAPIDAPI_KEY = "d4eddedd3emshe6ecfb33d83cee5p11223ejsn75915a3cbd9f"
+RAPIDAPI_KEY = "dd60922840mshf97eb043f74c39bp13a78cjsn140fc790ce2c"
 # Raise an error if the SECRET_KEY is missing in non-test environments
 if not app.config['SECRET_KEY'] and os.getenv('FLASK_ENV') != 'testing':
     raise ValueError("No SECRET_KEY set for Flask application")
@@ -264,7 +264,20 @@ def create_pdf(resume_data):
     doc.build(story)
     buffer.seek(0)
     return buffer
+import re
+from html import escape
 
+
+# Function to format job description
+def format_job_description(text):
+    text = escape(text)
+    text = re.sub(r'(\r?\n){2,}', '</p><p>', text)
+    if text.strip():
+        text = f"<p>{text}</p>"
+    text = re.sub(r'(https?://[^\s]+)', r'<a href="\1" target="_blank">\1</a>', text)
+    text = re.sub(r'\n+', '\n', text)
+
+    return text
 # Original Routes
 @app.route('/')
 def index():
@@ -624,6 +637,7 @@ def job_search():
     querystring_jobs = {
         "query": search_query,
         "page": page,
+        "num_pages": "20",
         "employment_types": employment_type,
         "location": country,
         "employers": employer,
@@ -635,9 +649,18 @@ def job_search():
     try:
         response_jobs = requests.get(job_listings_url, headers=headers, params=querystring_jobs)
         if response_jobs.status_code == 200:
-            jobs = response_jobs.json().get("data", [])
+            jobs_data = response_jobs.json()
+            jobs = jobs_data.get("data", [])
+            total_jobs = len(jobs)
+
+            # Calculate total pages (assuming 10 jobs per page)
+            total_pages = (total_jobs // 10) + (1 if total_jobs % 10 > 0 else 0)
+            prev_page = page - 1 if page > 1 else None
+            next_page = page + 1 if page < total_pages else None
+
         else:
             jobs = []
+            total_pages = 1
             print(f"Error: {response_jobs.status_code} - {response_jobs.text}")
     except requests.RequestException as e:
         logging.error(f"Error fetching job listings: {e}")
@@ -650,7 +673,11 @@ def job_search():
         selected_location=country,
         selected_employer=employer,
         selected_employment_type=employment_type,
-        jobs=jobs
+        jobs=jobs,
+        page=page,
+        total_pages=total_pages,
+        prev_page=prev_page,
+        next_page=next_page
     )
 
 @app.route('/student/job_details/<job_id>', methods=['GET'])
@@ -667,7 +694,13 @@ def job_details(job_id):
         response = requests.get(url, headers=headers, params=querystring)
         if response.status_code == 200:
             job_detail = response.json()
-            return jsonify(job_detail['data'][0])  # Return the first job result as JSON
+            job_data = job_detail['data'][0]
+            job_description = job_data.get('job_description', '')
+            formatted_description = format_job_description(job_description)
+
+            job_data['formatted_description'] = formatted_description
+
+            return jsonify(job_data)
         else:
             return jsonify({"error": "Failed to fetch job details."}), 500
     except requests.RequestException as e:

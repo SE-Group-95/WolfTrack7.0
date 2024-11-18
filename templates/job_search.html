@@ -14,6 +14,29 @@
             padding: 0;
             font-family: Arial, sans-serif;
         }
+        .pagination {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .pagination a {
+            padding: 8px 16px;
+            margin: 0 5px;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .pagination a.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .left-panel {
+            overflow-y: auto;
+            height: calc(100vh - 40px); /* Dynamic height adjustment for pagination */
+        }
         .container {
             display: flex;
             flex-wrap: wrap;
@@ -70,12 +93,23 @@
         .job-item:hover {
             background-color: #f0f0f0;
         }
-        .job-description {
-            display: none;
-            background-color: #fff;
+        .right-panel {
+            overflow-y: auto;
+            height: calc(100vh - 40px); /* Adjust to fit the viewport height */
             padding: 20px;
+            box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+            background-color: #f4f4f4;
+            position: relative;
+        }
+
+        .job-description {
+            max-height: calc(100vh - 80px); /* Ensure it doesn't exceed panel height */
+            overflow-y: auto; /* Enable scrolling within the description */
+            padding: 20px;
+            background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
         .loading {
             text-align: center;
@@ -111,7 +145,7 @@
                 <option value="">Select Employment Type</option>
                 <option value="FULLTIME" {% if selected_employment_type == "FULLTIME" %}selected{% endif %}>Full Time</option>
                 <option value="PARTTIME" {% if selected_employment_type == "PARTTIME" %}selected{% endif %}>Part Time</option>
-                <option value="CONTRACT" {% if selected_employment_type == "CONTRACT" %}selected{% endif %}>Contract</option>
+                <option value="CONTRACTOR" {% if selected_employment_type == "CONTRACTOR" %}selected{% endif %}>Contractor</option>
                 <option value="INTERN" {% if selected_employment_type == "INTERN" %}selected{% endif %}>Internship</option>
             </select>
 
@@ -128,39 +162,74 @@
         {% if not jobs %}
         <p>No jobs found. Try adjusting your search criteria.</p>
         {% endif %}
+        <div class="pagination">
+            {% if prev_page %}
+            <a href="{{ url_for('job_search', page=prev_page, keyword=keyword) }}">Previous</a>
+            {% else %}
+            <a class="disabled">Previous</a>
+            {% endif %}
+            <span>Page {{ page }} of {{ total_pages }}</span>
+            {% if next_page %}
+            <a href="{{ url_for('job_search', page=next_page, keyword=keyword) }}">Next</a>
+            {% else %}
+            <a class="disabled">Next</a>
+            {% endif %}
+        </div>
     </div>
     <div class="right-panel">
         <h2>Job Details</h2>
-        <div id="job-description" class="job-description"></div>
+        <div id="job-description" class="job-description">
+            <p>Click a job to see details.</p>
+        </div>
         <p id="loading" class="loading" style="display: none;">Loading...</p>
     </div>
 </div>
 
 <script>
-// Fetch job details when a job is clicked
 document.querySelectorAll('.job-item').forEach(item => {
     item.addEventListener('click', function () {
         const jobId = item.getAttribute('data-job-id');
+        const loadingIndicator = document.getElementById('loading');
+        const jobDescription = document.getElementById('job-description');
+
+        // Show loading state
+        loadingIndicator.style.display = 'block';
+        jobDescription.style.display = 'none';
+
         fetch(`/student/job_details/${jobId}`)
             .then(response => response.json())
             .then(data => {
-                const jobDescription = document.getElementById('job-description');
+                loadingIndicator.style.display = 'none';
+                jobDescription.style.display = 'block';
+
                 if (data.error) {
                     jobDescription.innerHTML = `<p>Error fetching job details</p>`;
                 } else {
                     jobDescription.innerHTML = `
                         <h3>${data.job_title}</h3>
-                        <p><strong>Company:</strong> <a href="${data.employer_website}" target="_blank">${data.employer_name}</a></p>
-                        <p><strong>Type:</strong> ${data.job_employment_type}</p>
-                        <p><strong>Location:</strong> ${data.job_location}</p>
-                        <img src="${data.employer_logo}" alt="${data.employer_name}" width="150">
+                        <div style="display: grid; grid-template-columns: 1fr auto; gap: 20px;">
+                            <div>
+                                <p><strong>Company:</strong> <a href="${data.employer_website}" target="_blank">${data.employer_name}</a></p>
+                                <p><strong>Type:</strong> ${data.job_employment_type}</p>
+                                <p><strong>Location:</strong> ${data.job_location}</p>
+                            </div>
+                            <img src="${data.employer_logo}" alt="${data.employer_name}" style="width: auto; height: auto;">
+                        </div>
                         <a href="${data.job_apply_link}" target="_blank">Apply Now</a>
-                        <p>${data.job_description}</p>
+                        <div class="job-description-content">
+                            ${data.formatted_description}
+                        </div>
                     `;
-                    jobDescription.style.display = 'block';
+
+                    document.querySelector('.right-panel').scrollTop = 0;
                 }
             })
-            .catch(err => console.error(err));
+            .catch(err => {
+                console.error(err);
+                loadingIndicator.style.display = 'none';
+                jobDescription.innerHTML = `<p>Failed to load job details. Please try again.</p>`;
+                jobDescription.style.display = 'block';
+            });
     });
 });
 </script>
