@@ -748,6 +748,35 @@ def download_resume():
     else:
         return jsonify({"message": "Resume not found"}), 404
 
+@app.route('/interview-prep')
+def interview_prep():
+    return render_template('interview_prep.html')  # Assuming the HTML file is saved as interview_prep.html
+
+@app.route('/mock-interview')
+def mock_interview():
+    # Route for mock interviews
+    return render_template('mock_interview.html')
+
+@app.route('/common-questions')
+def common_questions():
+    # Route for common interview questions
+    return render_template('common_questions.html')
+
+@app.route('/interview-tips')
+def interview_tips():
+    # Route for interview tips
+    return render_template('interview_tips.html')
+
+@app.route('/company-insights')
+def company_insights():
+    # Route for company insights
+    return render_template('company_insights.html')
+
+@app.route('/practice-zone')
+def practice_zone():
+    # Route for interactive practice zone
+    return render_template('practice_zone.html')
+
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
