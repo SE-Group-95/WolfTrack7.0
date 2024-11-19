@@ -40,6 +40,7 @@ from reportlab.lib.units import inch
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 logging.basicConfig(level=logging.ERROR)
 from dotenv import load_dotenv
+import requests
 
 
 
@@ -51,7 +52,8 @@ bcrypt = Bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI', "sqlite:///database.db")
 # Set the SECRET_KEY, with a fallback for testing environments
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_testing_secret_key')
-
+RAPIDAPI_HOST = "jsearch.p.rapidapi.com"
+RAPIDAPI_KEY = "dd60922840mshf97eb043f74c39bp13a78cjsn140fc790ce2c"
 # Raise an error if the SECRET_KEY is missing in non-test environments
 if not app.config['SECRET_KEY'] and os.getenv('FLASK_ENV') != 'testing':
     raise ValueError("No SECRET_KEY set for Flask application")
@@ -262,7 +264,20 @@ def create_pdf(resume_data):
     doc.build(story)
     buffer.seek(0)
     return buffer
+import re
+from html import escape
 
+
+# Function to format job description
+def format_job_description(text):
+    text = escape(text)
+    text = re.sub(r'(\r?\n){2,}', '</p><p>', text)
+    if text.strip():
+        text = f"<p>{text}</p>"
+    text = re.sub(r'(https?://[^\s]+)', r'<a href="\1" target="_blank">\1</a>', text)
+    text = re.sub(r'\n+', '\n', text)
+
+    return text
 # Original Routes
 @app.route('/')
 def index():
@@ -604,8 +619,96 @@ def chat_gpt_analyzer():
 
 @app.route('/student/job_search')
 def job_search():
-    return render_template('job_search.html')
+    keyword = request.args.get('keyword', 'Jobs')
+    job_title = request.args.get('job_title', '')
+    country = request.args.get('location', '')
+    employer = request.args.get('employer', '')
+    employment_type = request.args.get('employment_type', '')
+    page = request.args.get('page', 1, type=int)
 
+    search_query = f"{keyword} {job_title} {country} {employer}".strip()
+
+    headers = {
+        "x-rapidapi-key": RAPIDAPI_KEY,
+        "x-rapidapi-host": "jsearch.p.rapidapi.com"
+    }
+
+    job_listings_url = "https://jsearch.p.rapidapi.com/search"
+    querystring_jobs = {
+        "query": search_query,
+        "page": page,
+        "num_pages": "20",
+        "employment_types": employment_type,
+        "location": country,
+        "employers": employer,
+        "date_posted": "all"
+    }
+
+    print(f"Job Listings Query: {querystring_jobs}")
+
+    try:
+        response_jobs = requests.get(job_listings_url, headers=headers, params=querystring_jobs)
+        if response_jobs.status_code == 200:
+            jobs_data = response_jobs.json()
+            jobs = jobs_data.get("data", [])
+            total_jobs = len(jobs)
+
+            # Calculate total pages (assuming 10 jobs per page)
+            total_pages = (total_jobs // 10) + (1 if total_jobs % 10 > 0 else 0)
+            prev_page = page - 1 if page > 1 else None
+            next_page = page + 1 if page < total_pages else None
+
+        else:
+            jobs = []
+            total_pages = 1
+            print(f"Error: {response_jobs.status_code} - {response_jobs.text}")
+    except requests.RequestException as e:
+        logging.error(f"Error fetching job listings: {e}")
+        jobs = []
+
+    return render_template(
+        'job_search.html',
+        keyword=keyword,
+        selected_job_title=job_title,
+        selected_location=country,
+        selected_employer=employer,
+        selected_employment_type=employment_type,
+        jobs=jobs,
+        page=page,
+        total_pages=total_pages,
+        prev_page=prev_page,
+        next_page=next_page
+    )
+
+@app.route('/student/job_details/<job_id>', methods=['GET'])
+def job_details(job_id):
+    url = "https://jsearch.p.rapidapi.com/job-details"
+    querystring = {"job_id": job_id, "extended_publisher_details": "false"}
+
+    headers = {
+        "x-rapidapi-key": RAPIDAPI_KEY,
+        "x-rapidapi-host": "jsearch.p.rapidapi.com"
+    }
+
+    try:
+        response = requests.get(url, headers=headers, params=querystring)
+        if response.status_code == 200:
+            job_detail = response.json()
+            job_data = job_detail['data'][0]
+            job_description = job_data.get('job_description', '')
+            formatted_description = format_job_description(job_description)
+
+            job_data['formatted_description'] = formatted_description
+
+            return jsonify(job_data)
+        else:
+            return jsonify({"error": "Failed to fetch job details."}), 500
+    except requests.RequestException as e:
+        logging.error(f"Error fetching job details: {e}")
+        return jsonify({"error": "Internal server error"}), 500
+
+
+#Deprecated
 @app.route('/student/job_search/result', methods=['POST'])
 def search():
     job_role = request.form['job_role']
