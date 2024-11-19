@@ -637,7 +637,7 @@ def job_search():
     querystring_jobs = {
         "query": search_query,
         "page": page,
-        "num_pages": "20",
+        "num_pages": "10",
         "employment_types": employment_type,
         "location": country,
         "employers": employer,
@@ -652,8 +652,14 @@ def job_search():
             jobs_data = response_jobs.json()
             jobs = jobs_data.get("data", [])
             total_jobs = len(jobs)
+            os.chdir(os.getcwd()+"/Controller/resume/")
 
-            # Calculate total pages (assuming 10 jobs per page)
+            for job in jobs:
+                job_description = job.get('job_description', '')
+                match_percentage = resume_analyzer(job_description, str(os.listdir(os.getcwd())[0]))
+                job['match_percentage'] = int(match_percentage)
+            os.chdir("..")
+            os.chdir("..")
             total_pages = (total_jobs // 10) + (1 if total_jobs % 10 > 0 else 0)
             prev_page = page - 1 if page > 1 else None
             next_page = page + 1 if page < total_pages else None
