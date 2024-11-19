@@ -41,6 +41,12 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 logging.basicConfig(level=logging.ERROR)
 from dotenv import load_dotenv
 import requests
+from flask import Flask, request, jsonify, render_template
+from werkzeug.exceptions import BadRequest, InternalServerError
+
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+API_URL = "https://api.openai.com/v1/chat/completions"
+
 
 
 
@@ -879,6 +885,79 @@ def company_insights():
 def practice_zone():
     # Route for interactive practice zone
     return render_template('practice_zone.html')
+@app.errorhandler(BadRequest)
+def handle_bad_request(error):
+    print(f"Bad Request: {error}")  # Debug print
+    response = {
+        'error': 'Bad Request',
+        'message': str(error)
+    }
+    return jsonify(response), 400
+
+# Route to handle chatbot interaction
+@app.route('/chatbot', methods=['POST'])
+def chatbot():
+    try:
+        # Check if the 'message' field exists in form data
+        data = request.get_json()
+
+        # Debugging: Log the raw data to see what is being received
+        print("Received data:", data)
+        if data is None:
+            raise BadRequest("No JSON data received")
+
+        # Check if the 'message' field is present in the data
+        user_message = data.get('message', '')
+        if not user_message:
+            raise BadRequest("'message' field is required in the request")
+
+
+        print(f"Received user message: {user_message}")  # Debug print
+
+        # Set headers for OpenAI API request
+        headers = {
+            'Authorization': f'Bearer {OPENAI_API_KEY}',
+            'Content-Type': 'application/json'
+        }
+
+        # Payload to send to OpenAI API
+        payload = {
+            "model": "gpt-3.5-turbo",  # You can replace this with the model you prefer
+            "messages": [
+                {"role": "system", "content": "You are a helpful assistant."},
+                {"role": "user", "content": user_message}
+            ],
+            "max_tokens": 150
+        }
+
+        # Send POST request to OpenAI API
+        response = requests.post(API_URL, json=payload, headers=headers)
+        print(f"OpenAI API Response Code: {response.status_code}")  # Debug print
+
+        # Check if the response was successful
+        if response.status_code == 200:
+            data = response.json()
+            bot_reply = data['choices'][0]['message']['content'].strip()
+            print(f"Bot reply: {bot_reply}")  # Debug print
+            return jsonify({'reply': bot_reply})
+
+        # If response status is not 200, return a generic error
+        else:
+            print(f"OpenAI API Error: {response.text}")  # Debug print
+            return jsonify({'reply': 'Sorry, I couldn\'t process your message.'}), 500
+
+    except BadRequest as e:
+        # Handle BadRequest (400)
+        return handle_bad_request(e)
+
+    except Exception as e:
+        # Catch any unexpected errors
+        print(f"Unexpected error: {str(e)}")  # Debug print
+        return jsonify({'error': 'Internal Server Error', 'message': str(e)}), 500
+
+
+
+
 
 if __name__ == '__main__':
     with app.app_context():
