@@ -299,5 +299,55 @@
 <footer>
     <p>&copy; 2024 WolfTrack | Preparing you for success</p>
 </footer>
+<script>
+    // Toggle chatbot visibility
+    function toggleChatbot() {
+      const chatbotContainer = document.getElementById('chatbot-container');
+      if (chatbotContainer.style.display === 'none' || chatbotContainer.style.display === '') {
+        chatbotContainer.style.display = 'block';
+      } else {
+        chatbotContainer.style.display = 'none';
+      }
+    }
+
+    // Handle message sending
+    function sendMessage() {
+      const userMessage = document.getElementById('user-message').value;
+      const messages = document.getElementById('messages');
+
+      if (userMessage.trim() === '') return;
+
+      // Add user's message to the chat
+      const userDiv = document.createElement('div');
+      userDiv.textContent = `You: ${userMessage}`;
+      messages.appendChild(userDiv);
+
+      // Clear input
+      document.getElementById('user-message').value = '';
+
+      // Send to Flask backend
+      fetch('/chatbot', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: userMessage }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          // Add bot's response to the chat
+          const botDiv = document.createElement('div');
+          botDiv.textContent = `Bot: ${data.reply}`;
+          messages.appendChild(botDiv);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+    }
+
+    // Bind the toggle function to the button
+    document.getElementById('chatbot-toggle').onclick = toggleChatbot;
+  </script>
+
 </body>
 </html>
