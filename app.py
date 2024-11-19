@@ -396,26 +396,59 @@ def admin():
     return render_template('admin_landing.html', user=user)
 
 
-@app.route('/student',methods=['GET', 'POST'])
+@app.route('/student', methods=['GET', 'POST'])
 def student():
     data_received = request.args.get('data')
-    user = find_user(str(data_received),database)
+    page = request.args.get('page', default=1, type=int)  # Fetch page number from query params
+    per_page = 5  # Define items per page
 
+    user = find_user(str(data_received), database)
 
-    jobapplications = get_job_applications(database)
-    return render_template('home.html', user=user, jobapplications=jobapplications)
+    # Fetch paginated job applications
+    total_jobs = len(get_job_applications(database))
+    total_pages = (total_jobs + per_page - 1) // per_page  # Calculate total pages
+    start = (page - 1) * per_page
+    end = start + per_page
+    jobapplications = get_job_applications(database)[start:end]  # Slice for pagination
+
+    return render_template(
+        'home.html',
+        user=user,
+        jobapplications=jobapplications,
+        current_page=page,
+        total_pages=total_pages
+    )
+
 
 @app.route('/student/<status>', methods=['GET', 'POST'])
 def get_job_application_status(status):
     data_received = request.args.get('data')
+    page = request.args.get('page', default=1, type=int)  # Fetch page number
+    per_page = 5  # Define items per page
+
     user = find_user(str(data_received), database)
 
+    # Fetch job applications based on status
     if status:
         job_applications = get_job_applications_by_status(database, status)
     else:
         job_applications = get_job_applications(database)
 
-    return render_template('home.html', user=user, jobapplications=job_applications)
+    # Pagination calculations
+    total_jobs = len(job_applications)
+    total_pages = (total_jobs + per_page - 1) // per_page  # Calculate total pages
+    start = (page - 1) * per_page
+    end = start + per_page
+    job_applications = job_applications[start:end]  # Slice for pagination
+
+    return render_template(
+        'home.html',
+        user=user,
+        jobapplications=job_applications,
+        current_page=page,
+        total_pages=total_pages
+    )
+
 
 
 @app.route("/admin/send_email", methods=['GET','POST'])
