@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Interview Preparation - WolfTrack</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google Font -->
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <!-- Bootstrap -->
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script>
+
+
+      target = 40;
+      applied = 1;
+      function setTarget() {
+        target = parseInt(document.getElementById("target").value);
+        draw();
+      }
+    </script>
+    <style>
+      .icon-function {
+        color: #16353f;
+        cursor: pointer;
+      }
+      #analyze_resume a {
+        text-decoration: none;
+        color: black;
+      }
+      #analyze_resume {
+        font-weight: bold;
+      }
+      #rA:hover {
+        transform: translateY(-5px);
+      }
+      #setTarget:hover {
+        transform: translateY(-5px);
+      }
+      .project-icon {
+        margin-top: 5px;
+        margin-right: 5px;
+      }
+      .card-common {
+        width: 18rem;
+        text-align: left;
+      }
+      .daily-target-chart {
+        width: 18rem;
+        height: 180px;
+        margin: 0 auto;
+        border-radius: 5px;
+      }
+      .feature-button {
+        background-color: #da2d2d;
+        border-radius: 5px;
+      }
+      .section-heading {
+        width: 18rem;
+        font-size: 20px;
+        text-align: left;
+        color: #1c4552;
+      }
+      .section-division {
+        width: 18rem;
+        height: 4px;
+        border-bottom: 3px solid #1c4552;
+        text-align: center;
+      }
+      .section-content {
+        width: 18rem;
+        text-align: left;
+        padding-top: 10px;
+      }
+      .align-centre {
+        text-align: center;
+      }
+      .padding-left-right-6 {
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+      .pointer-cursor {
+        cursor: pointer;
+      }
+
+        /* Styles for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+
+
+        .container {
+            padding: 30px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            color: #0073e6;
+        }
+
+        .prep-resources {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .resource-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .resource-card h4 {
+            font-size: 1.5rem;
+            color: #0073e6;
+        }
+
+        .resource-card p {
+            font-size: 1rem;
+            margin: 15px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0073e6;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #005bb5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #343a40;
+            color: #fff;
+            margin-top: 50px;
+        }
+    </style>
+
+    <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/layout.css') }}"
+    />
+
+</head>
+<body>
+<!-- Navigation bar -->
+    <nav class="navbar navbar-expand-sm navbar-dark sticky-top">
+        <ul class="navbar-nav">
+            <img
+                    class="rounded-circle project-icon"
+                    alt="100x100"
+                    src="https://ih1.redbubble.net/image.1703296696.9941/st,small,507x507-pad,600x600,f8f8f8.jpg"
+                    height="30px"
+                    width="30px"
+                    style="margin-right: 5px; margin-top: 5px"
+                    data-holder-rendered="true"
+            />
+            <a class="navbar-brand" href="/">WolfTrack</a>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <a href="/student/analyze_resume" style="color: #facaca; text-decoration: none"
+            >Analyze Resume</a
+            >
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <a href="/student/job_search" style="color: #facaca; text-decoration: none"
+            >Search Jobs Online</a
+            >
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <a href="/student/job_profile_analyze" style="color: #facaca; text-decoration: none"
+            >Skill Check</a
+            >
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <a href="/chat_gpt_analyzer" style="color: #facaca; text-decoration: none">Resume Suggestions</a>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <a href="/resume_builder" style="color: #facaca; text-decoration: none">Resume Builder</a>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <a href="/interview-prep" style="color: #facaca; text-decoration: none">Interview Preparation</a>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+        </ul>
+
+    </nav>
+<!-- Main content -->
+<div class="container">
+    <section class="hero">
+        <h2>Master Your Next Interview</h2>
+        <p>Preparation, mock interviews, and expert tips to help you land your dream job.</p>
+    </section>
+
+    <section class="prep-resources">
+        <div class="resource-card">
+            <h4>Mock Interview Practice</h4>
+            <p>Get hands-on experience with mock interviews and receive personalized feedback.</p>
+            <a href="/mock-interview" class="btn">Start Mock Interview</a>
+        </div>
+        <div class="resource-card">
+            <h4>Common Interview Questions</h4>
+            <p>Prepare for interviews with a collection of commonly asked questions across industries.</p>
+            <a href="/common-questions" class="btn">View Questions</a>
+        </div>
+        <div class="resource-card">
+            <h4>Interview Tips</h4>
+            <p>Learn how to present yourself confidently with expert interview strategies.</p>
+            <a href="/interview-tips" class="btn">Read Tips</a>
+        </div>
+        <div class="resource-card">
+            <h4>Company Insights</h4>
+            <p>Get detailed insights into companies you are interviewing with, including culture and recent news.</p>
+            <a href="/company-insights" class="btn">Explore Insights</a>
+        </div>
+    </section>
+
+    <section class="practice-zone">
+        <h3>Interactive Practice Zone</h3>
+        <p>Test your skills in realistic interview settings with AI-powered simulations.</p>
+        <a href="/practice-zone" class="btn">Launch Practice Zone</a>
+    </section>
+</div>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 WolfTrack | Preparing you for success</p>
+</footer>
+</body>
+</html>
