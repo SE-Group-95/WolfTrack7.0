@@ -956,6 +956,9 @@ def chatbot():
         return jsonify({'error': 'Internal Server Error', 'message': str(e)}), 500
 
 
+@app.route('/mock-practice')
+def mock_practice():
+    return render_template('mock_interview.html')
 
 
 
