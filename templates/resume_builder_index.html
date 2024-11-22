@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,197 +8,180 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-red: #E23F44;
-            --primary-dark: #2C3E50;
-            --white: #ffffff;
-        }
+	:root {
+		--primary-red: #E23F44;
+		--primary-dark: #2C3E50;
+		--white: #ffffff;
+	}
 
-        body {
-            padding: 0;
-            background-color: #f5f5f5;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+	body {
+		padding: 0;
+		background-color: #f5f5f5;
+		font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	}
 
-        .header {
-            background-color: var(--primary-red);
-            color: var(--white);
-            padding: 20px;
-            margin-bottom: 30px;
-            display: flex;
-            align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+	.header {
+		background-color: var(--primary-red);
+		color: var(--white);
+		padding: 20px;
+		margin-bottom: 30px;
+		display: flex;
+		align-items: center;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	}
 
-        .home-btn {
-            background-color: transparent;
-            border: 2px solid var(--white);
-            color: var(--white);
-            padding: 8px 15px;
-            border-radius: 5px;
-            margin-right: 20px;
-            transition: all 0.3s ease;
-        }
+	.home-btn {
+		background-color: transparent;
+		border: 2px solid var(--white);
+		color: var(--white);
+		padding: 8px 15px;
+		border-radius: 5px;
+		margin-right: 20px;
+		transition: all 0.3s ease;
+	}
 
-        .home-btn:hover {
-            background-color: var(--white);
-            color: var(--primary-red);
-        }
+	.home-btn:hover {
+		background-color: var(--white);
+		color: var(--primary-red);
+	}
 
-        .container {
-            background-color: var(--white);
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(0,0,0,0.1);
-            margin-top: 20px;
-            margin-bottom: 40px;
-        }
+	.container {
+		background-color: var(--white);
+		padding: 30px;
+		border-radius: 8px;
+		box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+		margin-top: 20px;
+		margin-bottom: 40px;
+	}
 
-        .form-group {
-            margin-bottom: 25px;
-        }
+	.form-group {
+		margin-bottom: 25px;
+	}
 
-        .form-control {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 10px;
-            transition: all 0.3s ease;
-        }
+	.form-control {
+		border: 1px solid #ddd;
+		border-radius: 5px;
+		padding: 10px;
+		transition: all 0.3s ease;
+	}
 
-        .form-control:focus {
-            border-color: var(--primary-red);
-            box-shadow: 0 0 0 0.2rem rgba(226, 63, 68, 0.25);
-        }
+	.form-control:focus {
+		border-color: var(--primary-red);
+		box-shadow: 0 0 0 0.2rem rgba(226, 63, 68, 0.25);
+	}
 
-        .education-entry, .experience-entry {
-            border: 1px solid #ddd;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            position: relative;
-            background-color: #fafafa;
-        }
+	.education-entry,
+	.experience-entry {
+		border: 1px solid #ddd;
+		padding: 20px;
+		margin-bottom: 20px;
+		border-radius: 8px;
+		position: relative;
+		background-color: #fafafa;
+	}
 
-        .remove-btn {
-            position: absolute;
-            right: 10px;
-            top: 10px;
-            background-color: var(--primary-red);
-            border: none;
-        }
+	.remove-btn {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		background-color: var(--primary-red);
+		border: none;
+	}
 
-        .btn-primary {
-            background-color: var(--primary-red);
-            border: none;
-        }
+	.btn-primary {
+		background-color: var(--primary-red);
+		border: none;
+	}
 
-        .btn-primary:hover {
-            background-color: #c83238;
-        }
+	.btn-primary:hover {
+		background-color: #c83238;
+	}
 
-        .required-field::after {
-            content: " *";
-            color: var(--primary-red);
-        }
+	.required-field::after {
+		content: " *";
+		color: var(--primary-red);
+	}
 
-        /* Placeholder styling */
-        .form-control::placeholder {
-            color: #999;
-            font-style: italic;
-        }
+	/* Placeholder styling */
+	.form-control::placeholder {
+		color: #999;
+		font-style: italic;
+	}
 
-        .section-title {
-            color: var(--primary-dark);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary-red);
-        }
-    </style>
+	.section-title {
+		color: var(--primary-dark);
+		margin-bottom: 20px;
+		padding-bottom: 10px;
+		border-bottom: 2px solid var(--primary-red);
+	}
+	</style>
 </head>
+
 <body>
-    <div class="header">
-        <button onclick="window.location.href='/student'" class="home-btn">
-            <i class="fas fa-home"></i> Home
-        </button>
-        <h1>Professional Resume Builder</h1>
-    </div>
-
-    <!-- Rest of the HTML remains the same, but update the input placeholders -->
-    <div class="container">
-        <div id="resumeList" class="mb-4">
-            <h3 class="section-title">Saved Resumes</h3>
-            <div class="form-group">
-                <select id="savedResumes" class="form-control">
-                    <option value="">Select a resume to load</option>
-                </select>
-            </div>
-            <div class="text-right mt-2">
-                <button id="deleteResume" class="btn btn-danger" style="display: none;">Delete Resume</button>
-            </div>
+<div class="header">
+    <button onclick="window.location.href='/student'" class="home-btn">
+        <i class="fas fa-home"></i> Home </button>
+    <h1>Professional Resume Builder</h1>
+</div>
+<!-- Rest of the HTML remains the same, but update the input placeholders -->
+<div class="container">
+    <div id="resumeList" class="mb-4">
+        <h3 class="section-title">Saved Resumes</h3>
+        <div class="form-group">
+            <select id="savedResumes" class="form-control">
+                <option value="">Select a resume to load</option>
+            </select>
         </div>
-
-        <form id="resumeForm" novalidate>
-            <!-- Update the input fields with placeholders -->
-            <div class="form-group">
-                <label for="resumeName" class="required-field">Resume Version Name</label>
-                <input type="text" class="form-control" id="resumeName" name="resumeName" 
-                       placeholder="e.g., Software Engineer 2024" required>
-            </div>
-
-            <div class="form-group">
-                <label for="fullName" class="required-field">Full Name</label>
-                <input type="text" class="form-control" id="fullName" name="fullName" 
-                       placeholder="e.g., John Doe" required>
-            </div>
-
-            <div class="form-group">
-                <label for="email" class="required-field">Email</label>
-                <input type="email" class="form-control" id="email" name="email" 
-                        placeholder="e.g., johndoe@example.com" required>
-               
-            </div>
-
-            <div class="form-group">
-                <label for="mobile" class="required-field">Mobile Number</label>
-                <input type="tel" class="form-control" id="mobile" name="mobile"
-                        placeholder="e.g., +1 123 456 7890" required>
-
-            </div>
-
-            <div class="form-group">
-                <label for="linkedin" class="required-field">LinkedIn Profile URL</label>
-                <input type="url" class="form-control" id="linkedin" name="linkedin"
-                        placeholder="e.g., linkedin.com/in/johndoe" required>
-
-            </div>
-
-            <div class="form-group">
-                <h4>Education</h4>
-                <div id="educationEntries"></div>
-                <button type="button" class="btn btn-secondary" id="addEducation">Add Education</button>
-            </div>
-
-            <div class="form-group">
-                <h4>Experience</h4>
-                <div id="experienceEntries"></div>
-                <button type="button" class="btn btn-secondary" id="addExperience">Add Experience</button>
-            </div>
-
-            <div class="form-group">
-                <label for="skills" class="required-field">Technical Skills (one per line)</label>
-                <textarea class="form-control" id="skills" name="skills" required></textarea>
-            </div>
-
-            <div class="btn-group">
-                <button type="submit" class="btn btn-primary me-2">Save Resume</button>
-                <button type="button" class="btn btn-success" id="downloadPDF">Download PDF</button>
-            </div>
-        </form>
+        <div class="text-right mt-2">
+            <button id="deleteResume" class="btn btn-danger" style="display: none;">Delete Resume</button>
+        </div>
     </div>
-
-    <!-- Update the templates with location field and placeholders -->
-    <script>
-        const educationTemplate = `
+    <form id="resumeForm" novalidate>
+        <!-- Update the input fields with placeholders -->
+        <div class="form-group">
+            <label for="resumeName" class="required-field">Resume Version Name</label>
+            <input type="text" class="form-control" id="resumeName" name="resumeName" placeholder="e.g., Software Engineer 2024" required>
+        </div>
+        <div class="form-group">
+            <label for="fullName" class="required-field">Full Name</label>
+            <input type="text" class="form-control" id="fullName" name="fullName" placeholder="e.g., John Doe" required>
+        </div>
+        <div class="form-group">
+            <label for="email" class="required-field">Email</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="e.g., johndoe@example.com" required>
+        </div>
+        <div class="form-group">
+            <label for="mobile" class="required-field">Mobile Number</label>
+            <input type="tel" class="form-control" id="mobile" name="mobile" placeholder="e.g., +1 123 456 7890" required>
+        </div>
+        <div class="form-group">
+            <label for="linkedin" class="required-field">LinkedIn Profile URL</label>
+            <input type="url" class="form-control" id="linkedin" name="linkedin" placeholder="e.g., linkedin.com/in/johndoe" required>
+        </div>
+        <div class="form-group">
+            <h4>Education</h4>
+            <div id="educationEntries"></div>
+            <button type="button" class="btn btn-secondary" id="addEducation">Add Education</button>
+        </div>
+        <div class="form-group">
+            <h4>Experience</h4>
+            <div id="experienceEntries"></div>
+            <button type="button" class="btn btn-secondary" id="addExperience">Add Experience</button>
+        </div>
+        <div class="form-group">
+            <label for="skills" class="required-field">Technical Skills (one per line)</label>
+            <textarea class="form-control" id="skills" name="skills" required></textarea>
+        </div>
+        <div class="btn-group" style="display: flex; gap: 20px;">
+            <button type="submit" class="btn btn-primary me-2">Save Resume</button>
+            <button type="button" class="btn btn-success" id="downloadPDF">Download PDF</button>
+            <button type="button" id="generateLatex">Overleaf for LaTex</button>
+        </div>
+    </form>
+</div>
+<!-- Update the templates with location field and placeholders -->
+<script>
+	const educationTemplate = `
             <div class="education-entry">
                 <button type="button" class="btn btn-danger btn-sm remove-btn">Remove</button>
                 <div class="form-group">
@@ -222,275 +206,269 @@
                 </div>
             </div>
         `;
-
-        const experienceTemplate = `
+	const experienceTemplate = `
             <div class="experience-entry">
                 <button type="button" class="btn btn-danger btn-sm remove-btn">Remove</button>
                 <div class="form-group">
                     <label class="required-field">Company</label>
-                    <input type="text" class="form-control company" 
+                    <input type="text" class="form-control company"
                            placeholder="e.g., Microsoft" required>
                 </div>
                 <div class="form-group">
                     <label class="required-field">Location</label>
-                    <input type="text" class="form-control location" 
+                    <input type="text" class="form-control location"
                            placeholder="e.g., Seattle, WA" required>
                 </div>
                 <div class="form-group">
                     <label class="required-field">Title</label>
-                    <input type="text" class="form-control title" 
+                    <input type="text" class="form-control title"
                            placeholder="e.g., Senior Software Engineer" required>
                 </div>
                 <div class="form-group">
                     <label class="required-field">Dates</label>
-                    <input type="text" class="form-control dates" 
+                    <input type="text" class="form-control dates"
                            placeholder="e.g., Jan 2020 - Present" required>
                 </div>
                 <div class="form-group">
                     <label class="required-field">Key Achievements (one per line)</label>
-                    <textarea class="form-control achievements" 
+                    <textarea class="form-control achievements"
                               placeholder="• Led development of new feature&#10;• Improved system performance by 50%&#10;• Mentored junior developers" required></textarea>
                 </div>
             </div>
         `;
+	// Function to validate form
+	function validateForm() {
+		const requiredFields = document.querySelectorAll('[required]');
+		let isValid = true;
+		requiredFields.forEach(field => {
+			if(!field.value.trim()) {
+				field.classList.add('is-invalid');
+				isValid = false;
+			} else {
+				field.classList.remove('is-invalid');
+			}
+		});
+		// Validate at least one education entry
+		const educationEntries = document.querySelectorAll('.education-entry');
+		if(educationEntries.length === 0) {
+			alert('Please add at least one education entry');
+			isValid = false;
+		}
+		// Validate at least one experience entry
+		const experienceEntries = document.querySelectorAll('.experience-entry');
+		if(experienceEntries.length === 0) {
+			alert('Please add at least one experience entry');
+			isValid = false;
+		}
+		return isValid;
+	}
+	// Function to load saved resumes
+	async function loadSavedResumes() {
+		try {
+			const response = await fetch('/get_all_resumes');
+			const resumes = await response.json();
+			const select = document.getElementById('savedResumes');
+			select.innerHTML = '<option value="">Select a resume to load</option>';
+			resumes.forEach(resume => {
+				const option = document.createElement('option');
+				option.value = resume.resume_name;
+				option.textContent = `${resume.resume_name} - ${resume.name}`;
+				select.appendChild(option);
+			});
+		} catch (error) {
+			console.error('Error loading resumes:', error);
+			alert('Error loading saved resumes');
+		}
+	}
+	// Function to load a specific resume
+	async function loadResume(resumeName) {
+		try {
+			const response = await fetch(`/retrieve_resume?resume_name=${resumeName}`);
+			const resume = await response.json();
+			document.getElementById('resumeName').value = resume.resume_name;
+			document.getElementById('fullName').value = resume.name;
+			document.getElementById('email').value = resume.email;
+			document.getElementById('mobile').value = resume.mobile;
+			document.getElementById('linkedin').value = resume.linkedin;
+			document.getElementById('skills').value = resume.skills;
+			// Clear existing entries
+			document.getElementById('educationEntries').innerHTML = '';
+			document.getElementById('experienceEntries').innerHTML = '';
+			// Load education entries
+			const education = JSON.parse(resume.education);
+			education.forEach(edu => {
+				const eduDiv = document.createElement('div');
+				eduDiv.innerHTML = educationTemplate;
+				document.getElementById('educationEntries').appendChild(eduDiv);
+				const entry = eduDiv.querySelector('.education-entry');
+				entry.querySelector('.institution').value = edu.institution;
+				entry.querySelector('.degree').value = edu.degree;
+				entry.querySelector('.graduation-year').value = edu.graduationYear;
+				entry.querySelector('.gpa').value = edu.gpa || '';
+				entry.querySelector('.coursework').value = edu.coursework || '';
+			});
+			// Load experience entries
+			const experience = JSON.parse(resume.experience);
+			experience.forEach(exp => {
+				const expDiv = document.createElement('div');
+				expDiv.innerHTML = experienceTemplate;
+				document.getElementById('experienceEntries').appendChild(expDiv);
+				const entry = expDiv.querySelector('.experience-entry');
+				entry.querySelector('.company').value = exp.company;
+				entry.querySelector('.location').value = exp.location;
+				entry.querySelector('.title').value = exp.title;
+				entry.querySelector('.dates').value = exp.dates;
+				entry.querySelector('.achievements').value = exp.achievements;
+			});
+			// Show delete button
+			document.getElementById('deleteResume').style.display = 'block';
+		} catch (error) {
+			console.error('Error loading resume:', error);
+			alert('Error loading resume');
+		}
+	}
+	// Update the form data collection to include location
+	function getFormData() {
+		const educationEntries = Array.from(document.querySelectorAll('.education-entry')).map(entry => ({
+			institution: entry.querySelector('.institution').value,
+			degree: entry.querySelector('.degree').value,
+			graduationYear: entry.querySelector('.graduation-year').value,
+			gpa: entry.querySelector('.gpa').value,
+			coursework: entry.querySelector('.coursework').value
+		}));
+		const experienceEntries = Array.from(document.querySelectorAll('.experience-entry')).map(entry => ({
+			company: entry.querySelector('.company').value,
+			location: entry.querySelector('.location').value,
+			title: entry.querySelector('.title').value,
+			dates: entry.querySelector('.dates').value,
+			achievements: entry.querySelector('.achievements').value
+		}));
+		return {
+			resume_name: document.getElementById('resumeName').value,
+			name: document.getElementById('fullName').value,
+			email: document.getElementById('email').value,
+			mobile: document.getElementById('mobile').value,
+			linkedin: document.getElementById('linkedin').value,
+			education: educationEntries,
+			experience: experienceEntries,
+			skills: document.getElementById('skills').value
+		};
+		// ... rest of the function remains the same ...
+	}
+	// Event Listeners
+	document.addEventListener('DOMContentLoaded', () => {
+		loadSavedResumes();
+		// Add Education Entry
+		document.getElementById('addEducation').addEventListener('click', () => {
+			const div = document.createElement('div');
+			div.innerHTML = educationTemplate;
+			document.getElementById('educationEntries').appendChild(div);
+		});
+		// Add Experience Entry
+		document.getElementById('addExperience').addEventListener('click', () => {
+			const div = document.createElement('div');
+			div.innerHTML = experienceTemplate;
+			document.getElementById('experienceEntries').appendChild(div);
+		});
+		// Remove Entry buttons
+		document.addEventListener('click', (e) => {
+			if(e.target.classList.contains('remove-btn')) {
+				e.target.closest('.education-entry, .experience-entry').remove();
+			}
+		});
+		// Load Selected Resume
+		document.getElementById('savedResumes').addEventListener('change', (e) => {
+			const resumeName = e.target.value;
+			if(resumeName) {
+				loadResume(resumeName);
+			} else {
+				document.getElementById('resumeForm').reset();
+				document.getElementById('educationEntries').innerHTML = '';
+				document.getElementById('experienceEntries').innerHTML = '';
+				document.getElementById('deleteResume').style.display = 'none';
+			}
+		});
+		// Save Resume
+		document.getElementById('resumeForm').addEventListener('submit', async (e) => {
+			e.preventDefault();
+			if(!validateForm()) {
+				return;
+			}
+			try {
+				const response = await fetch('/save_resume', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(getFormData())
+				});
+				const result = await response.json();
+				alert(result.message);
+				await loadSavedResumes();
+			} catch (error) {
+				console.error('Error saving resume:', error);
+				alert('Error saving resume');
+			}
+		});
+		// Download PDF
+		document.getElementById('downloadPDF').addEventListener('click', async () => {
+			const resumeName = document.getElementById('resumeName').value;
+			if(!resumeName) {
+				alert('Please save the resume first');
+				return;
+			}
+			window.location.href = `/download_resume?resume_name=${encodeURIComponent(resumeName)}`;
+		});
+		// Delete Resume
+		document.getElementById('deleteResume').addEventListener('click', async () => {
+			const resumeName = document.getElementById('resumeName').value;
+			if(!resumeName) return;
+			if(confirm('Are you sure you want to delete this resume?')) {
+				try {
+					const response = await fetch(`/delete_resume?resume_name=${resumeName}`, {
+						method: 'DELETE'
+					});
+					const result = await response.json();
+					alert(result.message);
+					document.getElementById('resumeForm').reset();
+					document.getElementById('educationEntries').innerHTML = '';
+					document.getElementById('experienceEntries').innerHTML = '';
+					document.getElementById('deleteResume').style.display = 'none';
+					await loadSavedResumes();
+				} catch (error) {
+					console.error('Error deleting resume:', error);
+					alert('Error deleting resume');
+				}
+			}
+		});
+		document.getElementById('generateLatex').addEventListener('click', async (e) => {
+            e.preventDefault();
 
-        // Function to validate form
-        function validateForm() {
-            const requiredFields = document.querySelectorAll('[required]');
-            let isValid = true;
+            const formData = getFormData();
 
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    field.classList.add('is-invalid');
-                    isValid = false;
-                } else {
-                    field.classList.remove('is-invalid');
-                }
+            const response = await fetch('/generate-latex', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
             });
 
-            // Validate at least one education entry
-            const educationEntries = document.querySelectorAll('.education-entry');
-            if (educationEntries.length === 0) {
-                alert('Please add at least one education entry');
-                isValid = false;
+            const result = await response.json();
+
+            if (result.success) {
+                const overleafUrl = result.overleafUrl;
+                window.open(overleafUrl, '_blank');
+            } else {
+                alert('Error generating LaTeX document');
             }
-
-            // Validate at least one experience entry
-            const experienceEntries = document.querySelectorAll('.experience-entry');
-            if (experienceEntries.length === 0) {
-                alert('Please add at least one experience entry');
-                isValid = false;
-            }
-
-            return isValid;
-        }
-
-        // Function to load saved resumes
-        async function loadSavedResumes() {
-            try {
-                const response = await fetch('/get_all_resumes');
-                const resumes = await response.json();
-                const select = document.getElementById('savedResumes');
-                select.innerHTML = '<option value="">Select a resume to load</option>';
-                resumes.forEach(resume => {
-                    const option = document.createElement('option');
-                    option.value = resume.resume_name;
-                    option.textContent = `${resume.resume_name} - ${resume.name}`;
-                    select.appendChild(option);
-                });
-            } catch (error) {
-                console.error('Error loading resumes:', error);
-                alert('Error loading saved resumes');
-            }
-        }
-
-        // Function to load a specific resume
-        async function loadResume(resumeName) {
-            try {
-                const response = await fetch(`/retrieve_resume?resume_name=${resumeName}`);
-                const resume = await response.json();
-
-                document.getElementById('resumeName').value = resume.resume_name;
-                document.getElementById('fullName').value = resume.name;
-                document.getElementById('email').value = resume.email;
-                document.getElementById('mobile').value = resume.mobile;
-                document.getElementById('linkedin').value = resume.linkedin;
-                document.getElementById('skills').value = resume.skills;
-
-                // Clear existing entries
-                document.getElementById('educationEntries').innerHTML = '';
-                document.getElementById('experienceEntries').innerHTML = '';
-
-                // Load education entries
-                const education = JSON.parse(resume.education);
-                education.forEach(edu => {
-                    const eduDiv = document.createElement('div');
-                    eduDiv.innerHTML = educationTemplate;
-                    document.getElementById('educationEntries').appendChild(eduDiv);
-                    
-                    const entry = eduDiv.querySelector('.education-entry');
-                    entry.querySelector('.institution').value = edu.institution;
-                    entry.querySelector('.degree').value = edu.degree;
-                    entry.querySelector('.graduation-year').value = edu.graduationYear;
-                    entry.querySelector('.gpa').value = edu.gpa || '';
-                    entry.querySelector('.coursework').value = edu.coursework || '';
-                });
-
-                // Load experience entries
-                const experience = JSON.parse(resume.experience);
-                experience.forEach(exp => {
-                    const expDiv = document.createElement('div');
-                    expDiv.innerHTML = experienceTemplate;
-                    document.getElementById('experienceEntries').appendChild(expDiv);
-                    
-                    const entry = expDiv.querySelector('.experience-entry');
-                    entry.querySelector('.company').value = exp.company;
-                    entry.querySelector('.location').value = exp.location;
-                    entry.querySelector('.title').value = exp.title;
-                    entry.querySelector('.dates').value = exp.dates;
-                    entry.querySelector('.achievements').value = exp.achievements;
-                });
-
-                // Show delete button
-                document.getElementById('deleteResume').style.display = 'block';
-            } catch (error) {
-                console.error('Error loading resume:', error);
-                alert('Error loading resume');
-            }
-        }
-
-
-
-
-        // Update the form data collection to include location
-        function getFormData() {
-            const educationEntries = Array.from(document.querySelectorAll('.education-entry')).map(entry => ({
-                institution: entry.querySelector('.institution').value,
-                degree: entry.querySelector('.degree').value,
-                graduationYear: entry.querySelector('.graduation-year').value,
-                gpa: entry.querySelector('.gpa').value,
-                coursework: entry.querySelector('.coursework').value
-            }));
-
-            const experienceEntries = Array.from(document.querySelectorAll('.experience-entry')).map(entry => ({
-                company: entry.querySelector('.company').value,
-                location: entry.querySelector('.location').value,
-                title: entry.querySelector('.title').value,
-                dates: entry.querySelector('.dates').value,
-                achievements: entry.querySelector('.achievements').value
-            }));
-            return {
-                resume_name: document.getElementById('resumeName').value,
-                name: document.getElementById('fullName').value,
-                email: document.getElementById('email').value,
-                mobile: document.getElementById('mobile').value,
-                linkedin: document.getElementById('linkedin').value,
-                education: JSON.stringify(educationEntries),
-                experience: JSON.stringify(experienceEntries),
-                skills: document.getElementById('skills').value
-            };
-            // ... rest of the function remains the same ...
-        }
-
-
-        // Event Listeners
-        document.addEventListener('DOMContentLoaded', () => {
-            loadSavedResumes();
-
-            // Add Education Entry
-            document.getElementById('addEducation').addEventListener('click', () => {
-                const div = document.createElement('div');
-                div.innerHTML = educationTemplate;
-                document.getElementById('educationEntries').appendChild(div);
-            });
-
-            // Add Experience Entry
-            document.getElementById('addExperience').addEventListener('click', () => {
-                const div = document.createElement('div');
-                div.innerHTML = experienceTemplate;
-                document.getElementById('experienceEntries').appendChild(div);
-            });
-
-            // Remove Entry buttons
-            document.addEventListener('click', (e) => {
-                if (e.target.classList.contains('remove-btn')) {
-                    e.target.closest('.education-entry, .experience-entry').remove();
-                }
-            });
-
-            // Load Selected Resume
-            document.getElementById('savedResumes').addEventListener('change', (e) => {
-                const resumeName = e.target.value;
-                if (resumeName) {
-                    loadResume(resumeName);
-                } else {
-                    document.getElementById('resumeForm').reset();
-                    document.getElementById('educationEntries').innerHTML = '';
-                    document.getElementById('experienceEntries').innerHTML = '';
-                    document.getElementById('deleteResume').style.display = 'none';
-                }
-            });
-
-            // Save Resume
-            document.getElementById('resumeForm').addEventListener('submit', async (e) => {
-                e.preventDefault();
-                
-                if (!validateForm()) {
-                    return;
-                }
-
-                try {
-                    const response = await fetch('/save_resume', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify(getFormData())
-                    });
-                    const result = await response.json();
-                    alert(result.message);
-                    await loadSavedResumes();
-                } catch (error) {
-                    console.error('Error saving resume:', error);
-                    alert('Error saving resume');
-                }
-            });
-
-            // Download PDF
-            document.getElementById('downloadPDF').addEventListener('click', async () => {
-                const resumeName = document.getElementById('resumeName').value;
-                if (!resumeName) {
-                    alert('Please save the resume first');
-                    return;
-                }
-                window.location.href = `/download_resume?resume_name=${encodeURIComponent(resumeName)}`;
-            });
-
-            // Delete Resume
-            document.getElementById('deleteResume').addEventListener('click', async () => {
-                const resumeName = document.getElementById('resumeName').value;
-                if (!resumeName) return;
-
-                if (confirm('Are you sure you want to delete this resume?')) {
-                    try {
-                        const response = await fetch(`/delete_resume?resume_name=${resumeName}`, {
-                            method: 'DELETE'
-                        });
-                        const result = await response.json();
-                        alert(result.message);
-                        document.getElementById('resumeForm').reset();
-                        document.getElementById('educationEntries').innerHTML = '';
-                        document.getElementById('experienceEntries').innerHTML = '';
-                        document.getElementById('deleteResume').style.display = 'none';
-                        await loadSavedResumes();
-                    } catch (error) {
-                        console.error('Error deleting resume:', error);
-                        alert('Error deleting resume');
-                    }
-                }
-            });
         });
+	});
 
-    </script>
+
+
+</script>
+
 </body>
+
 </html>
