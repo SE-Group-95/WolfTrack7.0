@@ -81,11 +81,8 @@ def chatgpt(resume_textfile_path):
 def extract_top_job_roles(resume_textfile_path):
     with open(resume_textfile_path, 'r') as file:
         resume_content = file.read()
-<<<<<<< HEAD
-    openai_api_key = os.getenv("OPENAI_API_KEY")
-=======
+
     openai_api_key = os.environ.get('OPENAI_API_KEY')
->>>>>>> parent of f1c1e78 (update api keys)
     api_url = "https://api.openai.com/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {openai_api_key}",
