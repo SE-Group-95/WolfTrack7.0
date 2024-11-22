@@ -960,6 +960,9 @@ def chatbot():
 def mock_practice():
     return render_template('mock_interview.html')
 
+@app.route('/common-questions')
+def common_question():
+    return render_template('common_questions.html')
 
 
 if __name__ == '__main__':
