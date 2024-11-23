@@ -665,6 +665,8 @@ def job_search():
     employer = request.args.get('employer', '')
     employment_type = request.args.get('employment_type', '')
     page = request.args.get('page', 1, type=int)
+    prev_page = None
+    next_page = None
 
     search_query = f"{keyword} {job_title} {country} {employer}".strip()
 
