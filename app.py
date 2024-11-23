@@ -9,7 +9,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 '''
-
+import base64
 import os
 import logging
 from flask import Flask, jsonify, request, render_template, make_response, redirect, url_for, send_from_directory, session, flash, send_file
@@ -23,7 +23,6 @@ from Controller.send_email import *
 from Controller.send_profile import *
 from Controller.ResumeParser import *
 from Utils.jobprofileutils import *
-import os
 from flask import send_file, current_app as app
 from Controller.chat_gpt_pipeline import pdf_to_text,chatgpt,extract_top_job_roles
 from Controller.data import data, upcoming_events, profile
@@ -60,6 +59,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI', "sqlite:///dat
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_testing_secret_key')
 RAPIDAPI_HOST = "jsearch.p.rapidapi.com"
 RAPIDAPI_KEY = "dd60922840mshf97eb043f74c39bp13a78cjsn140fc790ce2c"
+UPLOAD_FOLDER = 'uploads/'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # Raise an error if the SECRET_KEY is missing in non-test environments
 if not app.config['SECRET_KEY'] and os.getenv('FLASK_ENV') != 'testing':
     raise ValueError("No SECRET_KEY set for Flask application")
@@ -402,26 +403,59 @@ def admin():
     return render_template('admin_landing.html', user=user)
 
 
-@app.route('/student',methods=['GET', 'POST'])
+@app.route('/student', methods=['GET', 'POST'])
 def student():
     data_received = request.args.get('data')
-    user = find_user(str(data_received),database)
+    page = request.args.get('page', default=1, type=int)  # Fetch page number from query params
+    per_page = 5  # Define items per page
 
+    user = find_user(str(data_received), database)
 
-    jobapplications = get_job_applications(database)
-    return render_template('home.html', user=user, jobapplications=jobapplications)
+    # Fetch paginated job applications
+    total_jobs = len(get_job_applications(database))
+    total_pages = (total_jobs + per_page - 1) // per_page  # Calculate total pages
+    start = (page - 1) * per_page
+    end = start + per_page
+    jobapplications = get_job_applications(database)[start:end]  # Slice for pagination
+
+    return render_template(
+        'home.html',
+        user=user,
+        jobapplications=jobapplications,
+        current_page=page,
+        total_pages=total_pages
+    )
+
 
 @app.route('/student/<status>', methods=['GET', 'POST'])
 def get_job_application_status(status):
     data_received = request.args.get('data')
+    page = request.args.get('page', default=1, type=int)  # Fetch page number
+    per_page = 5  # Define items per page
+
     user = find_user(str(data_received), database)
 
+    # Fetch job applications based on status
     if status:
         job_applications = get_job_applications_by_status(database, status)
     else:
         job_applications = get_job_applications(database)
 
-    return render_template('home.html', user=user, jobapplications=job_applications)
+    # Pagination calculations
+    total_jobs = len(job_applications)
+    total_pages = (total_jobs + per_page - 1) // per_page  # Calculate total pages
+    start = (page - 1) * per_page
+    end = start + per_page
+    job_applications = job_applications[start:end]  # Slice for pagination
+
+    return render_template(
+        'home.html',
+        user=user,
+        jobapplications=job_applications,
+        current_page=page,
+        total_pages=total_pages
+    )
+
 
 
 @app.route("/admin/send_email", methods=['GET','POST'])
@@ -964,6 +998,85 @@ def mock_practice():
 def common_question():
     return render_template('common_questions.html')
 
+
+@app.route('/generate-latex', methods=['POST'])
+def generate_latex():
+        form_data = request.get_json()
+        # resume_name = form_data['resume_name']
+        full_name = form_data['name']
+        email = form_data['email']
+        mobile = form_data['mobile']
+        linkedin = form_data['linkedin']
+        education = form_data['education']
+        experience = form_data['experience']
+        skills = form_data['skills']
+
+        latex_template = f"""
+            \\documentclass[a4paper,10pt]{{article}}
+            \\usepackage{{setspace}}  % For line spacing
+            \\usepackage{{hyperref}}  % For clickable links
+            \\usepackage{{geometry}}  % For page layout adjustments
+            \\geometry{{margin=1in}}
+            \\usepackage{{lmodern}}  % Standard modern font
+            \\usepackage{{enumitem}}  % For list customization
+            \\setstretch{{1.2}}  % Set line spacing
+        
+            \\begin{{document}}
+        
+            \\begin{{flushright}}
+            \\textbf{{(+00) 111-2222-3333}} \\\\ % Phone number
+            \\textbf{{{email}}} \\\\ % Email
+            \\textbf{{\\href{{{linkedin}}}}}{{linkedin.com/in/prachinavale/}}}} \\\\
+            \\end{{flushright}}
+        
+            \\begin{{flushleft}}  
+            {{\\fontsize{{24pt}}{{28pt}}\\selectfont \\textbf{{{full_name}}}}} \\\\
+            \\noindent\\rule{{\\textwidth}}{{0.4pt}}
+            \\end{{flushleft}}
+        
+            \\section*{{Contact Information}}
+            \\textbf{{Email:}} {email} \\\\
+            \\textbf{{Phone:}} {mobile} \\\\
+            \\textbf{{LinkedIn:}} \\href{{{linkedin}}}{{linkedin.com/in/prachinavale/}}
+        
+            \\section*{{Education}}
+            """
+
+        for edu in education:
+            latex_template += f"""
+                \\textbf{{{edu['degree']}}} \\\\
+                {edu['institution']} \\\\
+                Expected Graduation: {edu['graduationYear']} \\\\
+                GPA: {edu['gpa']} \\\\
+                Relevant Coursework: {edu['coursework']}
+                \\vspace{{10pt}}
+                """
+
+        latex_template += "\\section*{Experience}\n"
+
+        for exp in experience:
+            latex_template += f"""
+                \\textbf{{{exp['title']}}} \\\\
+                \\textit{{{exp['company']}, {exp['dates']}}} \\\\
+                \\begin{{itemize}}[leftmargin=*]
+                \\item {exp['achievements']}
+                \\end{{itemize}}
+                \\vspace{{10pt}}
+                """
+
+        latex_template += f"""
+            \\section*{{Skills}}
+            \\textbf{{Languages:}} {skills}
+            \\end{{document}}
+            """
+        # Encode LaTeX to Base64
+        base64_latex = base64.b64encode(latex_template.encode('utf-8')).decode('utf-8')
+        overleaf_url = f"https://www.overleaf.com/docs?snip_uri=data:application/x-tex;base64,{base64_latex}"
+
+        return jsonify({
+            'success': True,
+            'overleafUrl': overleaf_url
+        })
 
 if __name__ == '__main__':
     with app.app_context():
