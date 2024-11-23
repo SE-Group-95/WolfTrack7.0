@@ -113,7 +113,7 @@
         cursor: pointer;
       }
 
-        /* Styles for the page */
+        /* General Body and Container Styling */
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f9;
@@ -122,61 +122,107 @@
             padding: 0;
         }
 
-
-
         .container {
             padding: 30px;
             max-width: 1200px;
             margin: auto;
         }
 
+        /* Hero Section Styling */
         .hero {
             text-align: center;
             margin-bottom: 50px;
         }
 
         .hero h2 {
-            font-size: 2.5rem;
-            color: #0073e6;
+            font-size: 2.8rem;
+            color: #da2d2d;
+            font-weight: bold;
         }
 
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        /* Resource Cards Styling */
         .prep-resources {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
             gap: 20px;
+            margin-bottom: 40px;
         }
 
         .resource-card {
             background-color: white;
-            border-radius: 8px;
+            border-radius: 10px;
             padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
             text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 300px;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
         }
 
         .resource-card h4 {
-            font-size: 1.5rem;
-            color: #0073e6;
+            font-size: 1.6rem;
+            color: #da2d2d;
+            margin-bottom: 10px;
         }
 
         .resource-card p {
             font-size: 1rem;
+            color: #555;
             margin: 15px 0;
+            line-height: 1.5;
         }
 
-        .btn {
+        .resource-card .btn {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #0073e6;
+            background-color: #da2d2d;
             color: white;
             border-radius: 5px;
             text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
         }
 
-        .btn:hover {
+        .resource-card .btn:hover {
             background-color: #005bb5;
         }
 
+        /* Practice Zone Section */
+        .practice-zone {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .practice-zone h3 {
+            font-size: 2rem;
+            color: #da2d2d;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .practice-zone p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .practice-zone .btn {
+            font-size: 1.2rem;
+            padding: 10px 30px;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
             padding: 20px;
@@ -184,7 +230,125 @@
             color: #fff;
             margin-top: 50px;
         }
-    </style>
+
+        /* Chatbot Styling */
+        #chatbot-container {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            width: 350px;
+            background-color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            display: none;
+            z-index: 1000;
+            overflow: hidden;
+            border: 2px solid #da2d2d;
+        }
+
+        #chatbot-header {
+            background-color: #da2d2d;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            position: relative;
+        }
+
+        #chatbot-header button {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        #chatbot-messages {
+            height: 400px;
+            overflow-y: auto;
+            padding: 10px;
+            color: black;
+            font-size: 0.95rem;
+            background-color: #f9f9f9;
+        }
+
+        #chatbot-messages div {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 8px;
+            max-width: 80%;
+        }
+
+        #chatbot-messages .user {
+            background-color: #da2d2d;
+            color: white;
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        #chatbot-messages .bot {
+            background-color: #e0e0e0;
+            color: black;
+        }
+
+        #chatbot-input {
+            display: flex;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border-top: 1px solid #ddd;
+        }
+
+        #chatbot-input input {
+            flex: 1;
+            margin-right: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        #chatbot-input button {
+            background-color: #da2d2d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #chatbot-input button:hover {
+            background-color: #005bb5;
+        }
+
+        #chatbot-toggle {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background-color: #da2d2d;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
+            z-index: 1001;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        #chatbot-toggle:hover {
+            background-color: #005bb5;
+            transform: scale(1.1);
+        }
+        </style>
 
     <link
             rel="stylesheet"
@@ -246,6 +410,7 @@
         <p>Preparation, mock interviews, and expert tips to help you land your dream job.</p>
     </section>
 
+    <!-- Interview Tips Section -->
     <section class="prep-resources">
         <div class="resource-card">
             <h4>Mock Interview Practice</h4>
@@ -260,14 +425,11 @@
         <div class="resource-card">
             <h4>Interview Tips</h4>
             <p>Learn how to present yourself confidently with expert interview strategies.</p>
-            <a href="/interview-tips" class="btn">Read Tips</a>
-        </div>
-        <div class="resource-card">
-            <h4>Company Insights</h4>
-            <p>Get detailed insights into companies you are interviewing with, including culture and recent news.</p>
-            <a href="/company-insights" class="btn">Explore Insights</a>
+            <a href="/interview-tips" class="btn" target="_blank">Read Tips</a>
         </div>
     </section>
+
+
 
     <section class="practice-zone">
         <h3>Interactive Practice Zone</h3>
@@ -275,10 +437,93 @@
         <a href="/practice-zone" class="btn">Launch Practice Zone</a>
     </section>
 </div>
+<!-- Chatbot Toggle Button -->
+<button id="chatbot-toggle">💬</button>
+
+<!-- Chatbot Container -->
+<div id="chatbot-container">
+    <div id="chatbot-header">
+        Chatbot
+        <button style="float: right; background: none; border: none; color: white;" onclick="toggleChatbot()">✖</button>
+    </div>
+    <div id="chatbot-messages">
+        <div id="messages"></div>
+    </div>
+    <div id="chatbot-input">
+        <input type="text" id="user-message" placeholder="Type your message here..." />
+        <button onclick="sendMessage()">Send</button>
+    </div>
+</div>
+
+
 
 <!-- Footer -->
 <footer>
     <p>&copy; 2024 WolfTrack | Preparing you for success</p>
 </footer>
+<script>
+    // Toggle chatbot visibility
+    function toggleChatbot() {
+      const chatbotContainer = document.getElementById('chatbot-container');
+      chatbotContainer.style.display =
+        chatbotContainer.style.display === 'none' || chatbotContainer.style.display === ''
+          ? 'block'
+          : 'none';
+    }
+
+    // Append message to chat window
+    function appendMessage(sender, message) {
+      const messages = document.getElementById('chatbot-messages');
+      const messageDiv = document.createElement('div');
+      messageDiv.textContent = `${sender}: ${message}`;
+      messageDiv.style.marginBottom = '10px';
+      messages.appendChild(messageDiv);
+      messages.scrollTop = messages.scrollHeight; // Auto-scroll to the latest message
+    }
+
+    // Send message to the backend and display the response
+    function sendMessage() {
+      const userMessage = document.getElementById('user-message').value.trim();
+
+      if (!userMessage) return;
+
+      // Append user's message to chat
+      appendMessage('You', userMessage);
+
+      // Clear the input field
+      document.getElementById('user-message').value = '';
+
+      // Send the message to the backend
+      fetch('/chatbot', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: userMessage }),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok');
+          }
+          return response.json();
+        })
+        .then((data) => {
+          // Append the bot's reply to chat
+          if (data.reply) {
+            appendMessage('Bot', data.reply);
+          } else {
+            appendMessage('Bot', 'Sorry, I could not process your message.');
+          }
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+          appendMessage('Bot', 'There was an error communicating with the server.');
+        });
+    }
+
+    // Initialize chatbot visibility
+    document.getElementById('chatbot-toggle').onclick = toggleChatbot;
+  </script>
+
 </body>
 </html>

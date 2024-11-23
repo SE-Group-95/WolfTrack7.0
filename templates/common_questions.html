@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Common Interview Questions</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Google Font -->
+    <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+
+    <!-- Bootstrap -->
+    <link
+            rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script>
+
+
+      target = 40;
+      applied = 1;
+      function setTarget() {
+        target = parseInt(document.getElementById("target").value);
+        draw();
+      }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            color: #1a73e8; /* Primary color for headings */
+            margin-top: 20px;
+        }
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px auto;
+            color: #555; /* Subtle secondary color for text */
+        }
+        ol {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0;
+            list-style-position: inside;
+        }
+        ol li {
+            background-color: #e8f5e9; /* Light green background for list items */
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            color: #333;
+            font-size: 16px;
+        }
+    </style>
+    <link
+            rel="stylesheet"
+            href="{{ url_for('static', filename='css/layout.css') }}"
+    />
+</head>
+<body>
+<nav class="navbar navbar-expand-sm navbar-dark sticky-top">
+    <ul class="navbar-nav">
+        <img
+                class="rounded-circle project-icon"
+                alt="100x100"
+                src="https://ih1.redbubble.net/image.1703296696.9941/st,small,507x507-pad,600x600,f8f8f8.jpg"
+                height="30px"
+                width="30px"
+                style="margin-right: 5px; margin-top: 5px"
+                data-holder-rendered="true"
+        />
+        <a class="navbar-brand" href="/">WolfTrack</a>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <a href="/student/analyze_resume" style="color: #facaca; text-decoration: none"
+        >Analyze Resume</a
+        >
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <a href="/student/job_search" style="color: #facaca; text-decoration: none"
+        >Search Jobs Online</a
+        >
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <a href="/student/job_profile_analyze" style="color: #facaca; text-decoration: none"
+        >Skill Check</a
+        >
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <a href="/chat_gpt_analyzer" style="color: #facaca; text-decoration: none">Resume Suggestions</a>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <a href="/resume_builder" style="color: #facaca; text-decoration: none">Resume Builder</a>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+        <a href="/interview-prep" style="color: #facaca; text-decoration: none">Interview Preparation</a>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Logout</a>
+        </li>
+    </ul>
+
+</nav>
+
+<h1>Common Interview Questions</h1>
+<p>Prepare your answers to these frequently asked questions:</p>
+<ol>
+    <li>Tell me about yourself.</li>
+    <li>What are your strengths and weaknesses?</li>
+    <li>Why do you want to work at our company?</li>
+    <li>Can you describe a time when you overcame a significant challenge?</li>
+    <li>Where do you see yourself in 5 years?</li>
+    <li>How do you handle feedback or criticism?</li>
+    <li>What makes you the best candidate for this position?</li>
+    <li>Can you explain this gap in your resume?</li>
+</ol>
+</body>
+</html>
