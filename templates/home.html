@@ -160,51 +160,84 @@
 </div>
 
 <!-- Add Modal -->
-<div id="mymodal" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
+<div id="mymodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addJobApplicationLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title">Add Job Application</h5>
+                <h5 id="addJobApplicationLabel" class="modal-title">Add Job Application</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{ url_for('add_job_application', user_id=user[2]) }}" method="POST">
+            <form action="{{ url_for('add_job_application', user_id=user[2]) }}" method="POST" novalidate>
                 <div class="modal-body">
+                    <!-- Company Name -->
                     <div class="form-group">
-                        <label>Company:</label>
-                        <input type="text" class="form-control" name="company" required>
+                        <label for="companyInput">Company:</label>
+                        <input type="text" id="companyInput" class="form-control" name="company" placeholder="Enter the company's name" required aria-required="true">
+                        <div class="invalid-feedback">Please provide a company name.</div>
                     </div>
+                    <!-- Location -->
                     <div class="form-group">
-                        <label>Location:</label>
-                        <input type="text" class="form-control" name="location" required>
+                        <label for="locationInput">Location:</label>
+                        <input type="text" id="locationInput" class="form-control" name="location" placeholder="Enter the job location" required aria-required="true">
+                        <div class="invalid-feedback">Please provide a location.</div>
                     </div>
+                    <!-- Job Position -->
                     <div class="form-group">
-                        <label>Job Position:</label>
-                        <input type="text" class="form-control" name="jobposition" required>
+                        <label for="jobPositionInput">Job Position:</label>
+                        <input type="text" id="jobPositionInput" class="form-control" name="jobposition" placeholder="Enter the job position title" required aria-required="true">
+                        <div class="invalid-feedback">Please provide a job position.</div>
                     </div>
+                    <!-- Salary -->
                     <div class="form-group">
-                        <label>Salary:</label>
-                        <input type="number" class="form-control" name="salary" required>
+                        <label for="salaryInput">Salary (in USD):</label>
+                        <input type="number" id="salaryInput" class="form-control" name="salary" placeholder="Enter the salary offer" min="0" step="0.01" required aria-required="true">
+                        <small class="form-text text-muted">Enter the salary in USD.</small>
+                        <div class="invalid-feedback">Please provide a valid salary.</div>
                     </div>
+                    <!-- Status -->
                     <div class="form-group">
-                        <label>Status:</label>
-                        <select class="form-control" name="status" required>
+                        <label for="statusSelect">Status:</label>
+                        <select id="statusSelect" class="form-control" name="status" required aria-required="true">
+                            <option value="" disabled selected>Select application status</option>
                             <option value="Applied">Applied</option>
                             <option value="In Progress">In Progress</option>
                             <option value="Interview">Interview</option>
                             <option value="Shortlisted">Shortlisted</option>
                             <option value="Selected">Selected</option>
                         </select>
+                        <div class="invalid-feedback">Please select a status.</div>
                     </div>
+                    <!-- Hidden User ID -->
                     <input type="hidden" name="user_id" value="{{ user[2] }}">
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Add</button>
+                    <button type="submit" class="btn btn-success">Add Application</button>
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+<script>
+    // Bootstrap Validation Script
+    (function () {
+        'use strict';
+        window.addEventListener('load', function () {
+            const forms = document.getElementsByClassName('needs-validation');
+            Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+
 {% endblock %}
