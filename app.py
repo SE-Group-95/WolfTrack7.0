@@ -89,9 +89,12 @@ class Resume(db.Model):
 
 # Original Form Classes
 class RegisterForm(FlaskForm):
-    username = StringField(render_kw={"placeholder": "Username"})
-    name = StringField(render_kw={"placeholder": "Name"})
-    password = PasswordField(render_kw={"placeholder": "Password"})
+    username = StringField(validators=[
+        InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Username"})
+    name = StringField(validators=[
+        InputRequired(), Length(min=4, max=20)], render_kw={"placeholder": "Name"})
+    password = PasswordField(validators=[
+        InputRequired(), Length(min=8, max=20)], render_kw={"placeholder": "Password"})
     usertype = SelectField(render_kw={"placeholder": "Usertype"}, choices=[('admin', 'Admin'), ('student', 'Student')])
     submit = SubmitField('Register')
 
