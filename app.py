@@ -1081,7 +1081,16 @@ def generate_latex():
         })
 
 if __name__ == '__main__':
+    import os
+
     with app.app_context():
         db.create_all()
+
     debug_mode = os.getenv('FLASK_DEBUG', 'False').lower() in ['true', '1', 't']
-    app.run(debug=debug_mode)
+
+    # Path to SSL certificate and key for HTTPS
+    ssl_context = ('cert.pem', 'cert.key')  # Always define this explicitly
+
+    app.run(debug=debug_mode, ssl_context=ssl_context)
+
+
