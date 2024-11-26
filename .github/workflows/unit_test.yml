@@ -25,6 +25,5 @@ jobs:
           echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> $GITHUB_ENV
 
       - name: Run tests
-        working-directory: ./UnitTesting
         run: |
-          python -m unittest test_app.py
+          python -m unittest UnitTesting/test_app.py
