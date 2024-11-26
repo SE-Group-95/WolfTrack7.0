@@ -1,25 +1,22 @@
-<h1><b>WolfTrack 6.0</b></h1>
+<h1><b>WolfTrack 7.0</b></h1>
 
 ---
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14027517.svg)](https://doi.org/10.5281/zenodo.14027517)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
-[![Build Status](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/build_repo.yml/badge.svg)](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/build_repo.yml)
-[![Manual Build](https://img.shields.io/github/actions/workflow/status/se2024-jpg/WolfTrack6.0/main.yml)](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/main.yml)
+[![Manual Build](https://img.shields.io/github/actions/workflow/status/SE-Group-95/WolfTrack7.0/main.yml)](https://github.com/SE-Group-95/WolfTrack7.0/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/SE-Group-95/WolfTrack7.0/branch/Features/graph/badge.svg?token=x5O6a1srek)](https://app.codecov.io/gh/SE-Group-95/WolfTrack7.0/tree/Features)
-![GitHub language count](https://img.shields.io/github/languages/count/se2024-jpg/WolfTrack6.0)
+![GitHub language count](https://img.shields.io/github/languages/count/SE-Group-95/WolfTrack7.0)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
-[![Style Checker](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/style_checker.yml/badge.svg)](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/style_checker.yml)
-[![Syntax Checker](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/syntax_checker.yml/badge.svg)](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/syntax_checker.yml)
-[![CodeQL](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/codeql.yml/badge.svg)](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/codeql.yml)
-[![Unit Test](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/unit_test.yml/badge.svg)](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/unit_test.yml)
+[![Style Checker](https://github.com/SE-Group-95/WolfTrack7.0/actions/workflows/style_checker.yml/badge.svg)](https://github.com/SE-Group-95/WolfTrack7.0/actions/workflows/style_checker.yml)
+[![Syntax Checker](https://github.com/SE-Group-95/WolfTrack7.0/actions/workflows/syntax_checker.yml/badge.svg)](https://github.com/SE-Group-95/WolfTrack7.0/actions/workflows/syntax_checker.yml)
+[![Unit Test](https://github.com/SE-Group-95/WolfTrack7.0/actions/workflows/unit_test.yml/badge.svg)](https://github.com/SE-Group-95/WolfTrack7.0/actions/workflows/unit_test.yml)
 [![PEP8](https://img.shields.io/badge/code%20style-pep8-orange.svg)](https://www.python.org/dev/peps/pep-0008/)
-[![GitHub pull-requests](https://img.shields.io/github/issues-pr/se2024-jpg/WolfTrack6.0)](https://github.com/se2024-jpg/WolfTrack6.0/pulls)
-[![GitHub-size](https://img.shields.io/github/repo-size/se2024-jpg/WolfTrack6.0)](https://github.com/se2024-jpg/WolfTrack6.0)
-[![GitHub issues](https://img.shields.io/github/issues/se2024-jpg/WolfTrack6.0)](https://github.com/se2024-jpg/WolfTrack6.0/issues)
-[![GitHub-closed-issues](https://img.shields.io/github/issues-closed/se2024-jpg/WolfTrack6.0)](https://github.com/se2024-jpg/WolfTrack6.0/issues?q=is%3Aissue+is%3Aclosed)
-![Last Commit](https://img.shields.io/github/last-commit/se2024-jpg/WolfTrack6.0)
-
+[![GitHub pull-requests](https://img.shields.io/github/issues-pr/SE-Group-95/WolfTrack7.0)](https://github.com/SE-Group-95/WolfTrack7.0/pulls)
+[![GitHub-size](https://img.shields.io/github/repo-size/SE-Group-95/WolfTrack7.0)](https://github.com/SE-Group-95/WolfTrack7.0)
+[![GitHub issues](https://img.shields.io/github/issues/SE-Group-95/WolfTrack7.0)](https://github.com/SE-Group-95/WolfTrack7.0/issues)
+[![GitHub-closed-issues](https://img.shields.io/github/issues-closed/SE-Group-95/WolfTrack7.0)](https://github.com/SE-Group-95/WolfTrack7.0/issues?q=is%3Aissue+is%3Aclosed)
+![Last Commit](https://img.shields.io/github/last-commit/SE-Group-95/WolfTrack7.0)
 
 
 
@@ -28,10 +25,10 @@
 <details open="open">
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#why-WolfTrack-6.0">Why WolfTrack 6.0?</a></li>
+    <li><a href="#why-WolfTrack-7.0">Why WolfTrack 7.0?</a></li>
     <li><a href="#check-out-the-video">Check out the video!</a></li>
     <li><a href="#what-is-new-in-this-version">What is new in this version?</a></li>
-    <li><a href="#what-type-of-user-is-WolfTrack-6.0-best-suited-for?">What type of user is WolfTrack 6.0 best suited for?</a></li>
+    <li><a href="#what-type-of-user-is-WolfTrack-7.0-best-suited-for?">What type of user is WolfTrack 7.0 best suited for?</a></li>
     <li><a href="#technology-stack">Technology Stack</a></li>
     <li><a href="#version-control-tools">Version Control Tools</a></li>
     <li><a href="#tools">Tools</a></li>
@@ -48,9 +45,9 @@
   </ol>
 </details>
 
-## Why WolfTrack 6.0?
+## Why WolfTrack 7.0?
 
-WolfTrack 6.0 is your ultimate destination for seamless organization and efficiency in your pursuit of internships and full-time job opportunities. This sophisticated online platform empowers you to streamline your application process, keeping tabs on every step of your professional journey. Say goodbye to scattered notes and endless email threads – with WolfTrack6.0, you can effortlessly manage applications, deadlines, and crucial documents, ensuring you never miss a beat in your career quest. It's your compass in the competitive job market, offering structure and precision without sacrificing style and user-friendliness. WolfTrack6.0 is your passport to success, guiding you through the winding paths of career opportunities with elegance and ease.
+WolfTrack 7.0 is your ultimate destination for seamless organization and efficiency in your pursuit of internships and full-time job opportunities. This sophisticated online platform empowers you to streamline your application process, keeping tabs on every step of your professional journey. Say goodbye to scattered notes and endless email threads – with WolfTrack7.0, you can effortlessly manage applications, deadlines, and crucial documents, ensuring you never miss a beat in your career quest. It's your compass in the competitive job market, offering structure and precision without sacrificing style and user-friendliness. WolfTrack7.0 is your passport to success, guiding you through the winding paths of career opportunities with elegance and ease.
 
 We offer features like giving suggestions for improvements on your resume, tracking your application, and many more.
 
@@ -58,16 +55,16 @@ We offer features like giving suggestions for improvements on your resume, track
 
 ## Check out the video!
 
-To demonstrate our application's functionality and showcase its working examples, we have produced a video for the WolfTrack 6.0 project. In this video, we showcase that the system operates as intended. You can view the video by clicking on the following link:  [Link](https://drive.google.com/file/d/1xcn-jG80-FSnsZyomk8VU9Ln5i--QhnW/view?usp=drive_link) 
+To demonstrate our application's functionality and showcase its working examples, we have produced a video for the WolfTrack 7.0 project. In this video, we showcase that the system operates as intended. You can view the video by clicking on the following link:  [Link](https://drive.google.com/file/d/1xcn-jG80-FSnsZyomk8VU9Ln5i--QhnW/view?usp=drive_link)
 
 ---
 
 ## What is new in this version?
-Checkout the [this documentation](docs/User%20Guide%20-%20WolfTrack6.0.pdf)
+Checkout the [this documentation](docs/User%20Guide%20-%20WolfTrack7.0.pdf)
 
 ---
 
-## What type of user is WolfTrack 6.0 best suited for?
+## What type of user is WolfTrack 7.0 best suited for?
 
 This platform has been designed keeping in mind any person who is out to seek a job or internship. This may be a college student in any year, as well as a career professional wishing to switch. It may also be someone looking to enter an industry for the first time. This platform caters to a wide target audience and its simple, yet powerful features make it useful for everyone.
 
@@ -113,9 +110,9 @@ This platform has been designed keeping in mind any person who is out to seek a 
   **Suitability for Prototyping and Small Projects**: For early stages of development, when the emphasis might be on rapidly prototyping an application or for smaller projects with relatively lower data requirements, SQLite can be a good choice due to its simplicity.
 
   **Flask Integration**: Flask has built-in support for SQLite. The sqlite3 module is included in Python's standard library, allowing Flask applications to interact with SQLite databases seamlessly.
-  
+
 - [Adzuna](https://developer.adzuna.com/overview)
-  
+
   The API provides access to rich job market data, including job descriptions, salaries, locations, and other relevant details. This data can be integrated into applications or platforms to offer insights into the job market trends and opportunities.
 ---
 
@@ -139,7 +136,7 @@ This platform has been designed keeping in mind any person who is out to seek a 
 
     `source test_env/bin/activate`
 
-  - Build the virtual environment:(must be present in [project root directory](https://github.com/se2024-jpg/WolfTrack6.0))
+  - Build the virtual environment:(must be present in [project root directory](https://github.com/se2024-jpg/WolfTrack7.0))
 
     `pip install -r requirements.txt`
 
@@ -147,9 +144,9 @@ This platform has been designed keeping in mind any person who is out to seek a 
 
   **To run/test the site locally:**
 
-  - Clone [WolfTrack github repo](https://github.com/se2024-jpg/WolfTrack6.0).
+  - Clone [WolfTrack github repo](https://github.com/se2024-jpg/WolfTrack7.0).
 
-  - Navigate to [project directory](https://github.com/se2024-jpg/WolfTrack6.0).
+  - Navigate to [project directory](https://github.com/se2024-jpg/WolfTrack7.0).
 
   - Run `python main.py` or `python3 main.py` <br> <br>
     If there is a certificate error coming up for nltk stopwords download: <br>
@@ -163,29 +160,29 @@ This platform has been designed keeping in mind any person who is out to seek a 
 - ### API Setup
 **Create an Account:**
 
-  Go to the Adzuna Developer portal developer.adzuna.com.
-  Sign up for an account to access the API. You might need to provide some basic details about your application, such as the name, purpose, and contact information.
+Go to the Adzuna Developer portal developer.adzuna.com.
+Sign up for an account to access the API. You might need to provide some basic details about your application, such as the name, purpose, and contact information.
 
 **Get API Credentials:**
 
-  Log in to your Adzuna Developer account.
-  Find the section to create an API application.
-  Create a new application to generate API credentials (usually API keys or tokens). These credentials are necessary to authenticate your requests to the Adzuna API.
+Log in to your Adzuna Developer account.
+Find the section to create an API application.
+Create a new application to generate API credentials (usually API keys or tokens). These credentials are necessary to authenticate your requests to the Adzuna API.
 
 **Change URL:**
 
-  Update the adzuna_url in your app.py - using the newly obtained credentials. This updated URL should reflect the API endpoint along with your authentication credentials for accessing the Adzuna API.
+Update the adzuna_url in your app.py - using the newly obtained credentials. This updated URL should reflect the API endpoint along with your authentication credentials for accessing the Adzuna API.
 
 ---
 
-[Class/Functions Documentation](https://github.com/se2024-jpg/WolfTrack6.0/blob/dev/docs/app.md)
-[Use Cases Documentation](docs/User%20Guide%20-%20WolfTrack6.0.pdf)
+[Class/Functions Documentation](https://github.com/se2024-jpg/WolfTrack7.0/blob/dev/docs/app.md)
+[Use Cases Documentation](docs/User%20Guide%20-%20WolfTrack7.0.pdf)
 
 ---
 
 ## Code Coverage
 
-It is part of the [Github Workflow Build](https://github.com/se2024-jpg/WolfTrack6.0/tree/Main/.github/workflows)
+It is part of the [Github Workflow Build](https://github.com/se2024-jpg/WolfTrack7.0/tree/Main/.github/workflows)
 
 ---
 
@@ -236,7 +233,7 @@ Future Scope:
 
 ## Developer Support and Updates
 
-For support and inquiries related to **WolfTrack 6.0**, please contact us at **csc510group77@gmail.com**. We are here to assist you and address any questions or issues you may have.
+For support and inquiries related to **WolfTrack 7.0**, please contact us at **csc510group77@gmail.com**. We are here to assist you and address any questions or issues you may have.
 
 We appreciate your interest and look forward to providing you with the best possible support and updates.
 
@@ -251,7 +248,7 @@ This project currently receives no funding.
 
 ## Contributions
 
-Please refer to the [CONTRIBUTING.md](https://github.com/se2024-jpg/WolfTrack6.0/blob/Main/CONTRIBUTING.md) if you want to contrbute to the WolfTrack 6.0 source code. Follow all the guidelines mentioned and raise a pull request for the developers to review before the code goes to the main source code.
+Please refer to the [CONTRIBUTING.md](https://github.com/se2024-jpg/WolfTrack7.0/blob/Main/CONTRIBUTING.md) if you want to contrbute to the WolfTrack 7.0 source code. Follow all the guidelines mentioned and raise a pull request for the developers to review before the code goes to the main source code.
 
 ---
 
@@ -273,4 +270,3 @@ Please refer to the [CONTRIBUTING.md](https://github.com/se2024-jpg/WolfTrack6.0
 - Thank you to the previous team 😊 for a thorough ReadMe and detailed documentation.
 
 ---
-
