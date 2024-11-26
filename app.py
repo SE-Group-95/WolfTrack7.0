@@ -42,7 +42,7 @@ from dotenv import load_dotenv
 import requests
 from flask import Flask, request, jsonify, render_template
 from werkzeug.exceptions import BadRequest, InternalServerError
-
+from Controller.data import upcoming_events
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 API_URL = "https://api.openai.com/v1/chat/completions"
 
@@ -58,7 +58,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI', "sqlite:///dat
 # Set the SECRET_KEY, with a fallback for testing environments
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_testing_secret_key')
 RAPIDAPI_HOST = "jsearch.p.rapidapi.com"
-RAPIDAPI_KEY = "7f4943ad9fmshddfeb1877d48292p13945cjsnc572b8529ab0"
+RAPIDAPI_KEY = "f74322c0e1mshd49f4255eb405b4p137b12jsnc6faec60fea3"
 UPLOAD_FOLDER = 'uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # Raise an error if the SECRET_KEY is missing in non-test environments
@@ -427,7 +427,7 @@ def student():
         current_page=page,
         total_pages=total_pages,
         data=None,
-        upcoming_events=[]
+        upcoming_events=upcoming_events
     )
 
 
@@ -454,7 +454,7 @@ def get_job_application_status(status):
         current_page=page,
         total_pages=total_pages,
         data=None,
-        upcoming_events=[]
+        upcoming_events=upcoming_events
     )
 
 
@@ -533,7 +533,7 @@ def add_New():
     date_applied = request.form['starting_date']
 
     s_email(company_name, location, Job_Profile, salary, user, password, email, sec_question, sec_answer, notes, date_applied)
-    return render_template('home.html', data=None, upcoming_events=[], user=user, jobapplications=[], current_page=1, total_pages=1)
+    return render_template('home.html', data=None, upcoming_events=upcoming_events, user=user, jobapplications=[], current_page=1, total_pages=1)
 
 # @app.route('/student/send_Profile',methods=['GET','POST'])
 # def send_Profile():
@@ -562,7 +562,7 @@ def send_Profile():
     user_id = request.form['user_id']
     user = find_user(str(user_id), database)
 
-    return render_template('home.html', data=None, upcoming_events=[], user=user, jobapplications=[], current_page=1, total_pages=1)
+    return render_template('home.html', data=None, upcoming_events=upcoming_events, user=user, jobapplications=[], current_page=1, total_pages=1)
 
 
 @app.route('/student/job_profile_analyze', methods=['GET', 'POST'])
@@ -594,7 +594,7 @@ def upload():
             return render_template(
                 "home.html",
                 error="User not found",
-                upcoming_events=[],
+                upcoming_events=upcoming_events,
             )
 
         # Get all uploaded files
@@ -612,7 +612,7 @@ def upload():
             return render_template(
                 "home.html",
                 error="No file uploaded",
-                upcoming_events=[],
+                upcoming_events=upcoming_events,
                 user=user,
                 jobapplications=jobapplications,
                 current_page=current_page,
@@ -656,7 +656,7 @@ def upload():
             return render_template(
                 "home.html",
                 error="Failed to save the file. Please try again.",
-                upcoming_events=[],
+                upcoming_events=upcoming_events,
                 user=user,
                 jobapplications=jobapplications,
                 current_page=current_page,
@@ -677,7 +677,7 @@ def upload():
         return render_template(
             "home.html",
             success="Resume replaced successfully!",
-            upcoming_events=[],
+            upcoming_events=upcoming_events,
             user=user,
             jobapplications=jobapplications,
             current_page=current_page,
@@ -697,7 +697,7 @@ def upload():
         return render_template(
             "home.html",
             error=f"An error occurred: {str(e)}",
-            upcoming_events=[],
+            upcoming_events=upcoming_events,
             user=user,
             jobapplications=jobapplications,
             current_page=current_page,
@@ -731,7 +731,7 @@ def display():
     else:
         user_id = request.form['user_id']
         user = find_user(str(user_id), database)
-        return render_template('home.html', data=None, upcoming_events=[], user=user, jobapplications=[], current_page=1, total_pages=1)
+        return render_template('home.html', data=None, upcoming_events=upcoming_events, user=user, jobapplications=[], current_page=1, total_pages=1)
 
 @app.route('/chat_gpt_analyzer/', methods=['GET'])
 def chat_gpt_analyzer():
