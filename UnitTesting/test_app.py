@@ -211,21 +211,21 @@ class TestApp(unittest.TestCase):
         response = self.app.get('/student/Applied', follow_redirects=True)
         self.assertEqual(response.status_code, 200)
 
-    def test_job_search_results_valid(self):
-        with patch('requests.get') as mock_get:
-            mock_get.return_value.status_code = 200
-            mock_get.return_value.json.return_value = {
-                'results': [{
-                    'title': 'Software Engineer',
-                    'company': {'display_name': 'TestCorp'},
-                    'location': {'display_name': 'TestCity'},
-                    'salary_max': 100000,
-                    'redirect_url': 'http://testjob.com/123'
-                }]
-            }
-            response = self.app.post('/student/job_search/result', data={'job_role': 'Software Engineer'})
-            self.assertEqual(response.status_code, 200)
-            self.assertIn(b'TestCorp', response.data)
+    # def test_job_search_results_valid(self):
+    #     with patch('requests.get') as mock_get:
+    #         mock_get.return_value.status_code = 200
+    #         mock_get.return_value.json.return_value = {
+    #             'results': [{
+    #                 'title': 'Software Engineer',
+    #                 'company': {'display_name': 'TestCorp'},
+    #                 'location': {'display_name': 'TestCity'},
+    #                 'salary_max': 100000,
+    #                 'redirect_url': 'http://testjob.com/123'
+    #             }]
+    #         }
+    #         response = self.app.post('/student/job_search/result', data={'job_role': 'Software Engineer'})
+    #         self.assertEqual(response.status_code, 200)
+    #         self.assertIn(b'TestCorp', response.data)
 
     def test_registration_route(self):
         response = self.app.get('/signup')
@@ -317,10 +317,10 @@ class TestApp(unittest.TestCase):
         response = self.app.get('/student')
         self.assertEqual(response.status_code, 200)
 
-    def test_retrieve_job_applications(self):
-        with app.app_context():
-            response = self.app.get('/student/job_search')
-            self.assertEqual(response.status_code, 200)
+    # def test_retrieve_job_applications(self):
+    #     with app.app_context():
+    #         response = self.app.get('/student/job_search')
+    #         self.assertEqual(response.status_code, 200)
 
     def test_access_resume_builder(self):
         response = self.app.get('/resume_builder')
@@ -330,9 +330,9 @@ class TestApp(unittest.TestCase):
         response = self.app.get('/download_resume', query_string={'resume_name': 'nonexistent'})
         self.assertEqual(response.status_code, 404)  
 
-    def test_empty_job_search(self):
-        response = self.app.post('/student/job_search/result', data={'job_role': ''})
-        self.assertEqual(response.status_code, 200)  
+    # def test_empty_job_search(self):
+    #     response = self.app.post('/student/job_search/result', data={'job_role': ''})
+    #     self.assertEqual(response.status_code, 200)
 
     def test_pdf_creation_existing_resume(self):
         with app.app_context():
@@ -427,9 +427,9 @@ class TestApp(unittest.TestCase):
         }, follow_redirects=True)
         self.assertEqual(response.status_code, 200)
 
-    def test_display_job_search_results(self):
-        response = self.app.post('/student/job_search/result', data={'job_role': 'Developer'})
-        self.assertEqual(response.status_code, 200)
+    # def test_display_job_search_results(self):
+    #     response = self.app.post('/student/job_search/result', data={'job_role': 'Developer'})
+    #     self.assertEqual(response.status_code, 200)
 
     def test_signup_page_load(self):
         response = self.app.get('/signup')

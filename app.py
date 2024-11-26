@@ -58,7 +58,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI', "sqlite:///dat
 # Set the SECRET_KEY, with a fallback for testing environments
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_testing_secret_key')
 RAPIDAPI_HOST = "jsearch.p.rapidapi.com"
-RAPIDAPI_KEY = "dd60922840mshf97eb043f74c39bp13a78cjsn140fc790ce2c"
+RAPIDAPI_KEY = "269d477b28msh525d8d3aeedf7e0p18fe33jsnda02fdfb39ff"
 UPLOAD_FOLDER = 'uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # Raise an error if the SECRET_KEY is missing in non-test environments
@@ -409,54 +409,52 @@ def admin():
 @app.route('/student', methods=['GET', 'POST'])
 def student():
     data_received = request.args.get('data')
-    page = request.args.get('page', default=1, type=int)  # Fetch page number from query params
-    per_page = 5  # Define items per page
+    page = request.args.get('page', default=1, type=int)
+    per_page = 5
 
     user = find_user(str(data_received), database)
-
-    # Fetch paginated job applications
     total_jobs = len(get_job_applications(database))
-    total_pages = (total_jobs + per_page - 1) // per_page  # Calculate total pages
+    total_pages = (total_jobs + per_page - 1) // per_page
     start = (page - 1) * per_page
     end = start + per_page
-    jobapplications = get_job_applications(database)[start:end]  # Slice for pagination
+    jobapplications = get_job_applications(database)[start:end]
 
+    # Ensure all variables are returned
     return render_template(
         'home.html',
         user=user,
         jobapplications=jobapplications,
         current_page=page,
-        total_pages=total_pages
+        total_pages=total_pages,
+        data=None,
+        upcoming_events=[]
     )
+
 
 
 @app.route('/student/<status>', methods=['GET', 'POST'])
 def get_job_application_status(status):
     data_received = request.args.get('data')
-    page = request.args.get('page', default=1, type=int)  # Fetch page number
-    per_page = 5  # Define items per page
+    page = request.args.get('page', default=1, type=int)
+    per_page = 5
 
     user = find_user(str(data_received), database)
-
-    # Fetch job applications based on status
-    if status:
-        job_applications = get_job_applications_by_status(database, status)
-    else:
-        job_applications = get_job_applications(database)
-
-    # Pagination calculations
+    job_applications = get_job_applications_by_status(database, status) if status else get_job_applications(database)
     total_jobs = len(job_applications)
-    total_pages = (total_jobs + per_page - 1) // per_page  # Calculate total pages
+    total_pages = (total_jobs + per_page - 1) // per_page
     start = (page - 1) * per_page
     end = start + per_page
-    job_applications = job_applications[start:end]  # Slice for pagination
+    job_applications = job_applications[start:end]
 
+    # Ensure all variables are returned
     return render_template(
         'home.html',
         user=user,
         jobapplications=job_applications,
         current_page=page,
-        total_pages=total_pages
+        total_pages=total_pages,
+        data=None,
+        upcoming_events=[]
     )
 
 
@@ -520,7 +518,7 @@ def delete_job_application(company):
         # Redirect to a success page or any relevant route after successful deletion
         return redirect(url_for('student', data=user_id))  # Redirect to the student page or your desired route
 
-@app.route('/student/add_New',methods=['GET','POST'])
+@app.route('/student/add_New', methods=['GET', 'POST'])
 def add_New():
     company_name = request.form['fullname']
     location = request.form['location_text']
@@ -534,29 +532,37 @@ def add_New():
     notes = request.form['notes']
     date_applied = request.form['starting_date']
 
-    s_email(company_name,location, Job_Profile,salary, user,password,email,sec_question,sec_answer,notes,date_applied)
-    return render_template('home.html', data=data, upcoming_events=upcoming_events, user=user)
+    s_email(company_name, location, Job_Profile, salary, user, password, email, sec_question, sec_answer, notes, date_applied)
+    return render_template('home.html', data=None, upcoming_events=[], user=user, jobapplications=[], current_page=1, total_pages=1)
 
-@app.route('/student/send_Profile',methods=['GET','POST'])
+# @app.route('/student/send_Profile',methods=['GET','POST'])
+# def send_Profile():
+#     emailID = request.form['emailID']
+#     s_profile(data,upcoming_events, profile,emailID)
+#
+#     print("Email Notification Sent")
+#     '''data_received = request.args.get('data')
+#     print('data_receivedddd->>>> ', data_received)
+#     user = find_user(str(data_received))
+#     print('Userrrrrr', user)'''
+#     user_id = request.form['user_id']
+#     user = request.form['user_id']
+#     print('==================================================================', user)
+#
+#     user = find_user(str(user),database)
+#
+#     data_received = request.args.get('data')
+#     user = find_user(str(data_received),database)
+#
+#     return render_template('home.html', data=data, upcoming_events=upcoming_events, user=user)
+@app.route('/student/send_Profile', methods=['GET', 'POST'])
 def send_Profile():
     emailID = request.form['emailID']
-    s_profile(data,upcoming_events, profile,emailID)
-
-    print("Email Notification Sent")
-    '''data_received = request.args.get('data')
-    print('data_receivedddd->>>> ', data_received)
-    user = find_user(str(data_received))
-    print('Userrrrrr', user)'''
+    s_profile(data=None, upcoming_events=[], profile=None, emailID=emailID)
     user_id = request.form['user_id']
-    user = request.form['user_id']
-    print('==================================================================', user)
-    
-    user = find_user(str(user),database)
+    user = find_user(str(user_id), database)
 
-    data_received = request.args.get('data')
-    user = find_user(str(data_received),database)
-
-    return render_template('home.html', data=data, upcoming_events=upcoming_events, user=user)
+    return render_template('home.html', data=None, upcoming_events=[], user=user, jobapplications=[], current_page=1, total_pages=1)
 
 
 @app.route('/student/job_profile_analyze', methods=['GET', 'POST'])
@@ -587,7 +593,8 @@ def upload():
 
     user_id = request.form['user_id']
     user = find_user(str(user_id), database)
-    return render_template("home.html", data=data, upcoming_events=upcoming_events, user=user)
+
+    return render_template("home.html", data=None, upcoming_events=[], user=user, jobapplications=[], current_page=1, total_pages=1)
 
 
 @app.route('/student/analyze_resume', methods=['GET'])
@@ -608,16 +615,17 @@ def analyze_resume():
     os.chdir("..")
     return render_template('resume_analyzer.html', data = output)
 
-@app.route("/student/display/", methods=['POST','GET'])
+@app.route("/student/display/", methods=['POST', 'GET'])
 def display():
-    path = os.getcwd()+"/Controller/resume/"
+    path = os.getcwd() + "/Controller/resume/"
     filename = os.listdir(path)
     if filename:
-        return send_file(path+str(filename[0]),as_attachment=True)
+        return send_file(path + str(filename[0]), as_attachment=True)
     else:
-        user = request.form['user_id']
-        user = find_user(str(user),database)
-        return render_template('home.html', user=user, data=data, upcoming_events=upcoming_events)
+        user_id = request.form['user_id']
+        user = find_user(str(user_id), database)
+        return render_template('home.html', data=None, upcoming_events=[], user=user, jobapplications=[], current_page=1, total_pages=1)
+
 
 
 
