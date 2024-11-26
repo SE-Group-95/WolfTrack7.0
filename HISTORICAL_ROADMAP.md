@@ -40,4 +40,16 @@
 - [x] Added tables to Wishlist, Applied, In Process and Offers tabs
 - [x] Added chatGPT pipeline for resume suggestions
 
+### Phase 5 WolfTrack 5.0:
+- [x] Implemented SQLite Database connectivity for the application.
+- [x] Employed Flask API to dynamically retrieve content from the database for both Student and Admin portals.
+- [x] Conducted code refactoring to enhance application dynamism.
+- [x] Developed dynamic Sign-up and Log-In functionalities for user interaction.
+- [x] Integrated a dynamic Job Application table with CRUD Operations.
+- [x] Included a 'Filter By Status' feature for streamlined job application viewing.
+- [x] Incorporated a Job Search Feature for improved navigation.
+- [x] Added Job Skills Extractor functionality for enhanced job matching.
+- [x] Resolved upload and download resume bugs for smoother user experience.
+- [x] Implemented Test Cases from scratch due to extensive code refactoring.
+- 
 ---
