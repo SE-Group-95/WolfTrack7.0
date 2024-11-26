@@ -5,6 +5,9 @@ import cv2
 import os
 import sys
 from pathlib import Path
+
+import numpy
+
 sys.path.append(str(Path(__file__).parent.parent / 'Controller'))
 from ResumeParser import (
     read_image_resume, read_pdf_resume, read_word_resume,
@@ -43,13 +46,9 @@ class TestResumeAnalysis(unittest.TestCase):
             result = clean_job_description(job_description)
             self.assertEqual(result, expected_result)
 
-    @patch("ResumeParser.CountVectorizer.fit_transform")
-    @patch("ResumeParser.cosine_similarity")
-    def test_get_resume_score(self, mock_cosine_similarity, mock_fit_transform):
-        mock_cosine_similarity.return_value = [[0, 0.6]]
-        mock_fit_transform.return_value = "mock_count_matrix"
+    def test_get_resume_score(self):
         result = get_resume_score(["Resume text", "Job description"])
-        self.assertEqual(type(result), str)
+        self.assertEqual(type(result), numpy.float64)
 
 if __name__ == "__main__":
     unittest.main()
