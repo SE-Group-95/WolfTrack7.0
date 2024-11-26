@@ -40,10 +40,10 @@
     <script src="https://code.highcharts.com/modules/export-data.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script>
-      
-   
+
+
       target = 40;
-      applied = 1;
+      applied = 8;
       function setTarget() {
         target = parseInt(document.getElementById("target").value);
         draw();
@@ -82,7 +82,7 @@
         border-radius: 5px;
       }
       .feature-button {
-        background-color: #da2d2d;
+        background-color: #cd3333;
         border-radius: 5px;
       }
       .section-heading {
@@ -251,168 +251,153 @@
 
     </nav>
 
-    <div class="container-fluid">
-      <div class="row" style="margin-top: 2%">
-        <div class="card1" id="analyze_resume" style="width: 100%">
-          <div style="display: flex; justify-content: space-evenly">
-            <!-- <a href="resumeAnalyzer"  class="cta pointer-cursor">
-            <div class="d-flex mb-3 mb-md-0 btn-block feature-button" id= "rA">
-              <div class = "p-2"><i class="material-icons icon-function">playlist_add_check</i></div>
 
-              <div class = "p-2 flex-grow-1 align-centre"><span>Analyze Resume</span></div>
-            </div>
-            
-          </a> -->
-            <!-- <a href="findJobs"  class="cta pointer-cursor">
-            <div class="d-flex mb-3 mb-md-0 btn-block feature-button" id= "rA">
-              <div class = "p-2"><i class="material-icons icon-function">search</i></div>
-
-              <div class = "p-2 flex-grow-1 align-centre"><span>Recommend Jobs</span></div>
-            </div>
-            
-          </a> -->
-            <div
-              href="#targetModal"
-              data-toggle="modal"
-              data-target="#targetModal"
-              class="cta pointer-cursor"
-            >
-              <div
-                class="d-flex mb-3 mb-md-0 btn-block feature-button"
-                id="setTarget"
-              >
-                <div class="p-2">
-                  <i class="material-icons icon-function"
-                    >filter_center_focus</i
-                  >
-                </div>
-
-                <div class="p-2 flex-grow-1 align-centre" style="color: black">
-                  <span>Set Target</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="row content">
         <!-- Left Sidebar -->
         <div class="col-sm-3 sidenav sidenav-left">
-          <center>
-            <!-- <img class="rounded-circle" alt="100x100"
-            src="https://ih1.redbubble.net/image.1703296696.9941/st,small,507x507-pad,600x600,f8f8f8.jpg" height="250px"
-            width="250px" data-holder-rendered="true">
+  <center>
+    <!-- Profile Card -->
+    <div class="card card-common mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col">
+            <b>NAME: </b>
+          </div>
+          <div class="col">
+            {{ user[1] }}
+          </div>
+        </div>
 
-          <br><br> -->
+        <div class="row">
+          <div class="col">
+            <b>USERNAME: </b>
+          </div>
+          <div class="col">
+            {{ user[2] }}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <b>Location</b>
+          </div>
+          <div class="col">Raleigh, NC</div>
+        </div>
+      </div>
+    </div>
 
-            <div class="card card-common">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col">
-                    <b>NAME: </b>
-                  </div>
-                  <div class="col">
-                    {{ user[1] }}
-                  </div>
-                </div>
-  
-                <div class="row">
-                  <div class="col">
-                    <b>USERNAME: </b>
-                  </div>
-                  <div class="col">
-                    {{ user[2] }}
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col">
-                    <b>Location</b>
-                  </div>
-                  <div class="col">Raleigh, NC</div>
-                </div>
-              </div>
-            </div>
-            <br />
-            <div id="container" class="daily-target-chart"></div>
-            <br />
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Upcoming Events</h5>
-                <table class="table table-hover">
-                  <thead>
-                    <tr>
-                      <th scope="col">Company</th>
-                      <th scope="col">Due Date</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for item in upcoming_events %}
-                    <tr>
-                      <td>{{ item.company }}</td>
-                      <td>{{ item.duedate }}</td>
-                    </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </center>
+    <!-- Set Target and Daily Target Chart Card -->
+    <div class="card mb-3">
+      <div class="card-body">
+        <!-- Set Target Section -->
+        <div style="display: flex; justify-content: space-evenly">
           <div
-            class="modal fade"
-            id="targetModal"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
+            href="#targetModal"
+            data-toggle="modal"
+            data-target="#targetModal"
+            class="cta pointer-cursor"
           >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Set Target</h5>
-                  <button
-                    type="button"
-                    class="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <div class="form-group">
-                    <label for="dailyTarget">Daily Target</label>
-                    <input
-                      type="number"
-                      id="target"
-                      name="target"
-                      class="form-control"
-                      id="target"
-                      value="10"
-                    />
-                  </div>
-                </div>
-                <div class="modal-footer" style="height: 50px !important">
-                  <button
-                    type="button"
-                    class="btn-sm btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button
-                    type="button"
-                    class="btn-sm btn-primary"
-                    data-dismiss="modal"
-                    onClick="setTarget()"
-                  >
-                    Set
-                  </button>
-                </div>
+            <div
+              class="d-flex mb-3 mb-md-0 btn-block feature-button"
+              id="setTarget"
+            >
+              <div class="p-2">
+                <i class="material-icons icon-function">filter_center_focus</i>
+              </div>
+
+              <div class="p-2 flex-grow-1 align-centre" style="color: white">
+                <span>Set Target</span>
               </div>
             </div>
           </div>
-          <br />
         </div>
+
+        <!-- Daily Target Chart -->
+        <div id="container" class="daily-target-chart"></div>
+      </div>
+    </div>
+
+    <!-- Upcoming Events Card -->
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Upcoming Events</h5>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Company</th>
+              <th scope="col">Due Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for item in upcoming_events %}
+            <tr>
+              <td>{{ item.company }}</td>
+              <td>{{ item.duedate }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </center>
+
+  <!-- Modal for Setting Target -->
+  <div
+    class="modal fade"
+    id="targetModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Set Target</h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="dailyTarget">Daily Target</label>
+            <input
+              type="number"
+              id="target"
+              name="target"
+              class="form-control"
+              value="10"
+            />
+          </div>
+        </div>
+        <div class="modal-footer" style="height: 50px !important">
+          <button
+            type="button"
+            class="btn-sm btn-secondary"
+            data-dismiss="modal"
+          >
+            Close
+          </button>
+          <button
+            type="button"
+            class="btn-sm btn-primary"
+            data-dismiss="modal"
+            onClick="setTarget()"
+          >
+            Set
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <br />
+</div>
+
 
         <!-- Content -->
         <div class="col-sm-6 text-left main-content">
@@ -420,126 +405,64 @@
         </div>
 
         <!-- Right Sidebar -->
-        <div class="col-sm-3 sidenav sidenav-right">
-          <div class="section-heading">
-            CV
-            <!--Padding is optional-->
-            <div class="section-division"></div>
-            <div class="section-content">
-              <form
-                id="upload-form"
-                action="{{url_for('upload', user_id = user[2])}}"
-                method="POST"
-                enctype="multipart/form-data"
-              >
-                <input type="hidden" name="user_id" value="{{ user[2] }}" />
-                <input
-                  type="file"
-                  name="file"
-                  multiple
-                  style="color: #1d4552; font-size: 14px"
-                />
-                <button
-                  href="upload"
-                  type="Submit"
-                  value="upload(user[2])"
-                  name="Upload"
-                  class="btn btn-dark"
-                  style="margin-top: 5%; position: relative"
-                >
-                  Add CV
-                </button>
-              </form>
-              <form
-                action="{{url_for('display')}}"
-                method="POST"
-                enctype="multipart/form-data"
-              >
-                <button
-                  href="display"
-                  type="Submit"
-                  value="display()"
-                  name="display"
-                  class="btn btn-dark"
-                  style="margin-top: 5%; position: relative"
-                >
-                  Download CV
-                </button>
-              </form>
-            </div>
-          </div>
-        {% if error %}
-<div class="alert alert-danger" role="alert" style="margin-bottom: 15px;">
-    {{ error }}
-</div>
-{% endif %}
-{% if success %}
-<div class="alert alert-success" role="alert" style="margin-bottom: 15px;">
-    {{ success }}
-</div>
-{% endif %}
+        <div class="col-lg-3">
+    <div class="sidenav">
+        <!-- CV Management Section with Card Border -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <div class="section-heading">
+                    CV Management
+                    <div class="section-division"></div>
+                    <div class="section-content">
+                        <form id="upload-form" action="{{url_for('upload', user_id = user[2])}}" method="POST" enctype="multipart/form-data">
+                            <input type="hidden" name="user_id" value="{{ user[2] }}">
+                            <div class="mb-3">
+                                <input type="file" class="form-control" name="file" multiple>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100 mb-3">Upload CV</button>
+                        </form>
 
-<div class="section-division"></div>
-<div class="section-content">
-
-
-            {% if data %}
-  <div class="alert alert-success" role="alert">
-    {{ data }}
-  </div>
-{% endif %}
-
-
-
-          <div class="section-heading" style="padding-top: 20px">
-            Send Profile
-            <!--Padding is optional-->
-            <div class="section-division"></div>
-            <div class="section-content">
-              <form
-                action="{{url_for('send_Profile', user_id = user[2])}}"
-                method="POST"
-              >
-                <div class="input-group">
-                  <div class="input-group-prepend">
-                    <div
-                      class="input-group-text padding-left-right-6"
-                      id="btnGroupAddon"
-                    >
-                      <i class="material-icons icon-eye">email</i>
+                        <form action="{{url_for('display')}}" method="POST" enctype="multipart/form-data">
+                            <button type="submit" class="btn btn-primary w-100">Download CV</button>
+                        </form>
                     </div>
-                  </div>
-                  <input type="hidden" name="user_id" value="{{ user[2] }}">
-                  <input
-                    type="text"
-                    name="emailID"
-                    id="emailID"
-                    class="form-control"
-                    placeholder="Email ID"
-                  />
-                  <div
-                    class="input-group-append"
-                    value="send_Profile(user[2])"
-                    onclick=""
-                  >
-                    <button
-                      type="submit"
-                      class="input-group-text btn-primary padding-left-right-6"
-                      id="btnGroupAddon"
-                    >
-                      <i class="material-icons icon-eye">send</i>
-                    </button>
-                  </div>
                 </div>
-              </form>
             </div>
-          </div>
-
-          <br />
-
-
         </div>
-      </div>
+
+        <!-- Alerts Section -->
+        {% if error %}
+        <div class="alert alert-danger mt-4">{{ error }}</div>
+        {% endif %}
+        {% if success %}
+        <div class="alert alert-success mt-4">{{ success }}</div>
+        {% endif %}
+        {% if data %}
+        <div class="alert alert-success mt-4">{{ data }}</div>
+        {% endif %}
+
+        <!-- Send Profile Section with Card Border -->
+        <div class="card mt-4">
+            <div class="card-body">
+                <div class="section-heading">
+                    Send Profile
+                    <div class="section-division"></div>
+                    <div class="section-content">
+                        <form action="{{url_for('send_Profile', user_id = user[2])}}" method="POST">
+                            <input type="hidden" name="user_id" value="{{ user[2] }}">
+                            <div class="input-group">
+                                <input type="email" name="emailID" class="form-control" placeholder="Email Address" required>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="material-icons">send</i>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+
   </body>
 </html>
