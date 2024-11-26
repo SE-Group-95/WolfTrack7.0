@@ -77,6 +77,7 @@ def get_resume_score(text: list) -> str:
     # return f"Your resume matches about {round(match_percentage + 50, 2)}% of the job description."
     return round(match_percentage + 50, 2)
 
+
 def resume_analyzer(jobtext: str, file: str) -> str:
     """Analyze a resume against a job description and generate insights."""
     if file.endswith(".pdf"):
