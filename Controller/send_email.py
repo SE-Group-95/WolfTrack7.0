@@ -28,22 +28,16 @@ PASSWORD = os.getenv("EMAIL_PASSWORD")    # Environment variable for sender's pa
 logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 
 def send_email(subject: str, body: str, receiver_email: str) -> bool:
-    """
-    Helper function to send an email with the specified subject and body.
-    """
     if not SENDER_EMAIL or not PASSWORD:
         logging.error("Sender email or password is not set in environment variables.")
         return False
 
-    # Create the email message
     message = MIMEMultipart()
     message["From"] = SENDER_EMAIL
     message["To"] = receiver_email
     message["Subject"] = subject
-    message["Bcc"] = receiver_email
     message.attach(MIMEText(body, "plain"))
 
-    # Send the email
     context = ssl.create_default_context()
     try:
         with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT, context=context) as server:
@@ -51,9 +45,10 @@ def send_email(subject: str, body: str, receiver_email: str) -> bool:
             server.sendmail(SENDER_EMAIL, receiver_email, message.as_string())
         logging.info(f"Email sent successfully to {receiver_email}.")
         return True
-    except smtplib.SMTPException as e:
-        logging.error(f"Failed to send email to {receiver_email}: {e}")
+    except Exception as e:
+        logging.error(f"Failed to send email: {e}")
         return False
+
 
 def s_email(company_name: str, location: str, job_profile: str, salary: str, user: str, 
             password: str, receiver_email: str, sec_question: str, sec_answer: str, 
