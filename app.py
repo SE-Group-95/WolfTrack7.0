@@ -58,7 +58,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI', "sqlite:///dat
 # Set the SECRET_KEY, with a fallback for testing environments
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_testing_secret_key')
 RAPIDAPI_HOST = "jsearch.p.rapidapi.com"
-RAPIDAPI_KEY = "dd60922840mshf97eb043f74c39bp13a78cjsn140fc790ce2c"
+RAPIDAPI_KEY = "269d477b28msh525d8d3aeedf7e0p18fe33jsnda02fdfb39ff"
 UPLOAD_FOLDER = 'uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # Raise an error if the SECRET_KEY is missing in non-test environments
