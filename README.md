@@ -51,6 +51,8 @@ WolfTrack 7.0 is your ultimate destination for seamless organization and efficie
 
 We offer features like giving suggestions for improvements on your resume, tracking your application, and many more.
 
+Link to our Poster:  [Link](https://www.canva.com/design/DAGVKp8r6wY/V9NS6fGyN8Egj4PHvPCEaQ/view?utm_content=DAGVKp8r6wY&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+
 ---
 
 ## Check out the video!
