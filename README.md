@@ -216,7 +216,7 @@ This project currently receives no funding.
 
 ## Contributions
 
-Please refer to the [CONTRIBUTING.md](https://github.com/SE-Group-95/WolfTrack7.0/blob/Main/CONTRIBUTING.md) if you want to contrbute to the WolfTrack 7.0 source code. Follow all the guidelines mentioned and raise a pull request for the developers to review before the code goes to the main source code.
+Please refer to the [CONTRIBUTING.md](https://github.com/SE-Group-95/WolfTrack7.0/blob/Features/CONTRIBUTING.md) if you want to contrbute to the WolfTrack 7.0 source code. Follow all the guidelines mentioned and raise a pull request for the developers to review before the code goes to the main source code.
 
 ---
 
