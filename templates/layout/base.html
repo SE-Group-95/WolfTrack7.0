@@ -468,6 +468,29 @@
               </form>
             </div>
           </div>
+        {% if error %}
+<div class="alert alert-danger" role="alert" style="margin-bottom: 15px;">
+    {{ error }}
+</div>
+{% endif %}
+{% if success %}
+<div class="alert alert-success" role="alert" style="margin-bottom: 15px;">
+    {{ success }}
+</div>
+{% endif %}
+
+<div class="section-division"></div>
+<div class="section-content">
+
+
+            {% if data %}
+  <div class="alert alert-success" role="alert">
+    {{ data }}
+  </div>
+{% endif %}
+
+
+
           <div class="section-heading" style="padding-top: 20px">
             Send Profile
             <!--Padding is optional-->
