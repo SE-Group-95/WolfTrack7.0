@@ -135,46 +135,67 @@ It is part of the [Github Workflow Build](https://github.com/SE-Group-95/WolfTra
 
 ## Roadmap
 
-[Click here to view historical phases (1-4)](./HISTORICAL_ROADMAP.md)
-
-### Phase 5 WolfTrack 5.0:
-- [x] Implemented SQLite Database connectivity for the application.
-- [x] Employed Flask API to dynamically retrieve content from the database for both Student and Admin portals.
-- [x] Conducted code refactoring to enhance application dynamism.
-- [x] Developed dynamic Sign-up and Log-In functionalities for user interaction.
-- [x] Integrated a dynamic Job Application table with CRUD Operations.
-- [x] Included a 'Filter By Status' feature for streamlined job application viewing.
-- [x] Incorporated a Job Search Feature for improved navigation.
-- [x] Added Job Skills Extractor functionality for enhanced job matching.
-- [x] Resolved upload and download resume bugs for smoother user experience.
-- [x] Implemented Test Cases from scratch due to extensive code refactoring.
+[Click here to view historical phases (1-5)](./HISTORICAL_ROADMAP.md)
 
 ### Phase 6 WolfTrack 6.0:
-- [ ] **Google OAuth Integration**
+- [x] **Google OAuth Integration**
   - Implement secure authentication using Google credentials
   - Allow users to sign in with their Google accounts
   - Enable seamless access to WolfTrack services
 
-- [ ] **Dynamic Resume Builder**
+- [x] **Dynamic Resume Builder**
   - Create interactive form-based resume creation
   - Generate professional PDF resumes
   - Support multiple resume templates
   - Enable saving and editing of resume drafts
   - Implement one-click resume downloading
 
-- [ ] **AI-Powered Job Recommender**
+- [x] **AI-Powered Job Recommender**
   - Integrate ChatGPT for intelligent job matching
   - Implement web scraping for real-time job listings
   - Analyze resume content for skill matching
   - Provide personalized job recommendations
   - Display job match percentage scores
 
-Future Scope:
-- [ ] Resume builder using LaTeX playground
-- [ ] Bringing HTTPS support
-- [ ] Online chat with expert
-- [ ] Interview Preparation resources tab
-- [ ] job match Percentage
+### Phase 7 WolfTrack 7.0:
+
+- [x] **LaTeX Resume Builder**
+  - Integrated a LaTeX-based resume builder with preloaded templates.
+  - Added support for dynamic editing.
+
+- [x] **HTTPS Support**
+  - Upgraded the platform to use HTTPS for secure communication and data protection.
+
+- [x] **Online Chat for Interview Prep**
+  - Added a chatbot to simulate interviews and provide real-time feedback.
+  - Included personalized tips and mock question suggestions.
+
+- [x] **Interview Preparation Resources**
+  - Introduced a dedicated tab with comprehensive interview preparation materials.
+  - Included industry-specific tips and sample questions.
+
+- [x] **Job Match Analytics**
+  - Displayed match percentages for jobs based on the uploaded resume.
+  - Helped users prioritize applications based on relevance.
+
+- [x] **Advanced Job Search API**
+  - Aggregated job listings from LinkedIn, Indeed, Glassdoor, ZipRecruiter, Monster, and other public sites.
+  - Implemented advanced filters and direct application links.
+
+- [x] **Enhanced Student Dashboard UI**
+  - Redesigned the student dashboard for better usability and navigation.
+  - Improved job and resume management tools for an intuitive user experience.
+
+
+### **Future Scope**
+
+- **Gamified Interview Prep**: Introduce quizzes and challenges to make interview preparation engaging and interactive.
+
+- **Dynamic Job Market Trends**: Provide insights into industry trends, including demand for specific roles, skills, and locations, to guide career planning.
+
+- **Community Forums and Mentorship**: Build a space for peer networking, mentorship programs, and experience sharing among job seekers.
+
+- **Company Insights Dashboard**: Offer detailed company profiles, employee reviews, and insights to help users make informed application decisions.
 
 ---
 
@@ -195,7 +216,7 @@ This project currently receives no funding.
 
 ## Contributions
 
-Please refer to the [CONTRIBUTING.md](https://github.com/se2024-jpg/WolfTrack7.0/blob/Main/CONTRIBUTING.md) if you want to contrbute to the WolfTrack 7.0 source code. Follow all the guidelines mentioned and raise a pull request for the developers to review before the code goes to the main source code.
+Please refer to the [CONTRIBUTING.md](https://github.com/SE-Group-95/WolfTrack7.0/blob/Main/CONTRIBUTING.md) if you want to contrbute to the WolfTrack 7.0 source code. Follow all the guidelines mentioned and raise a pull request for the developers to review before the code goes to the main source code.
 
 ---
 
@@ -203,9 +224,9 @@ Please refer to the [CONTRIBUTING.md](https://github.com/se2024-jpg/WolfTrack7.0
 
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/girish1430"><img src="https://avatars.githubusercontent.com/u/57136088?v=4" width="75px;" alt=""/><br /><sub><b>Girish G N</b></sub></a></td>
-    <td align="center"><a href="https://github.com/joeljogy"><img src="https://avatars.githubusercontent.com/u/28514673?v=4" width="75px;" alt=""/><br /><sub><b>Joel Jogy George</b></sub></a><br /></td>
-    <td align="center"><a href="https://github.com/prav29"><img src="https://avatars.githubusercontent.com/u/38226613?v=4" width="75px;" alt=""/><br /><sub><b>Pravallika Vasireddy</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/MayurG26"><img src="https://avatars.githubusercontent.com/u/47857723?v=4" width="75px;" alt=""/><br /><sub><b>Mayur Gotmare</b></sub></a></td>
+    <td align="center"><a href="https://github.com/prachinav"><img src="https://avatars.githubusercontent.com/u/85338427?v=4" width="75px;" alt=""/><br /><sub><b>Prachi Navale</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/22SiD"><img src="https://avatars.githubusercontent.com/u/78725482?v=4" width="75px;" alt=""/><br /><sub><b>Sidharrth Gandhi</b></sub></a><br /></td>
   </tr>
 </table>
 
