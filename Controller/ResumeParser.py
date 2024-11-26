@@ -87,5 +87,5 @@ def resume_analyzer(jobtext: str, file: str) -> str:
         resume = read_word_resume(file)
 
     clean_jd = clean_job_description(jobtext)
-    # create_word_cloud(clean_jd)
-    return get_resume_score([resume, jobtext])
+    create_word_cloud(clean_jd)
+    return f"Your resume matches about {get_resume_score([resume, jobtext])}% of the job description."
