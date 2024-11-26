@@ -58,7 +58,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI', "sqlite:///dat
 # Set the SECRET_KEY, with a fallback for testing environments
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_testing_secret_key')
 RAPIDAPI_HOST = "jsearch.p.rapidapi.com"
-RAPIDAPI_KEY = "269d477b28msh525d8d3aeedf7e0p18fe33jsnda02fdfb39ff"
+RAPIDAPI_KEY = "7f4943ad9fmshddfeb1877d48292p13945cjsnc572b8529ab0"
 UPLOAD_FOLDER = 'uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 # Raise an error if the SECRET_KEY is missing in non-test environments
@@ -711,6 +711,12 @@ def job_search():
                 job_description = job.get('job_description', '')
                 match_percentage = resume_analyzer(job_description, str(os.listdir(os.getcwd())[0]))
                 job['match_percentage'] = int(match_percentage)
+                if job['match_percentage'] > 85:
+                    job['match_class'] = 'high-match'
+                elif job['match_percentage'] > 70:
+                    job['match_class'] = 'medium-match'
+                else:
+                    job['match_class'] = 'low-match'
             os.chdir("..")
             os.chdir("..")
             total_pages = (total_jobs // 10) + (1 if total_jobs % 10 > 0 else 0)
