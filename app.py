@@ -574,28 +574,135 @@ def job_profile_analyze():
         return render_template('job_profile_analyze.html', skills_text=skills_text, job_profile=job_profile)
     return render_template('job_profile_analyze.html', skills_text='', job_profile='')
 
+from flask import Flask, render_template, request, send_file
+from werkzeug.utils import secure_filename
+
+
 @app.route("/student/upload", methods=['POST'])
 def upload():
     APP_ROOT = os.path.dirname(os.path.abspath(__file__))
     target = os.path.join(APP_ROOT, 'Controller', 'resume')
 
-    if not os.path.isdir(target):
-        os.makedirs(target)
+    # Ensure the upload directory exists
+    os.makedirs(target, exist_ok=True)
 
-    existing_files = os.listdir(target)
-    if existing_files:
-        os.remove(os.path.join(target, existing_files[0]))
+    try:
+        # Get user_id first since we'll need it for error handling
+        user_id = request.form.get('user_id')
+        user = find_user(str(user_id), database)
+        if not user:
+            return render_template(
+                "home.html",
+                error="User not found",
+                upcoming_events=[],
+            )
 
-    for file in request.files.getlist("file"):
-        filename = file.filename
-        destination = os.path.join(target, filename)
-        file.save(destination)
+        # Get all uploaded files
+        files = request.files.getlist("file")
+        if not files or not files[0].filename:
+            jobapplications = get_job_applications(database)
+            per_page = 5
+            total_jobs = len(jobapplications)
+            total_pages = (total_jobs + per_page - 1) // per_page
+            current_page = 1
+            start = (current_page - 1) * per_page
+            end = start + per_page
+            jobapplications = jobapplications[start:end]
 
-    user_id = request.form['user_id']
-    user = find_user(str(user_id), database)
+            return render_template(
+                "home.html",
+                error="No file uploaded",
+                upcoming_events=[],
+                user=user,
+                jobapplications=jobapplications,
+                current_page=current_page,
+                total_pages=total_pages,
+            )
 
-    return render_template("home.html", data=None, upcoming_events=[], user=user, jobapplications=[], current_page=1, total_pages=1)
+        # Clear existing resumes in the main upload directory
+        try:
+            existing_files = os.listdir(target)
+            for existing_file in existing_files:
+                file_path = os.path.join(target, existing_file)
+                if os.path.isfile(file_path):
+                    os.remove(file_path)
+        except Exception as e:
+            print(f"Error clearing existing files: {str(e)}")
 
+        # Save the new files directly in the 'resume' directory
+        success = False
+        for file in files:
+            filename = secure_filename(file.filename)
+            if not filename:
+                continue
+
+            destination = os.path.join(target, filename)
+            try:
+                file.save(destination)
+                success = True
+            except Exception as e:
+                print(f"Error saving file: {str(e)}")
+
+        if not success:
+            jobapplications = get_job_applications(database)
+            per_page = 5
+            total_jobs = len(jobapplications)
+            total_pages = (total_jobs + per_page - 1) // per_page
+            current_page = 1
+            start = (current_page - 1) * per_page
+            end = start + per_page
+            jobapplications = jobapplications[start:end]
+
+            return render_template(
+                "home.html",
+                error="Failed to save the file. Please try again.",
+                upcoming_events=[],
+                user=user,
+                jobapplications=jobapplications,
+                current_page=current_page,
+                total_pages=total_pages,
+            )
+
+        # Fetch job applications from the database
+        jobapplications = get_job_applications(database)
+        per_page = 5
+        total_jobs = len(jobapplications)
+        total_pages = (total_jobs + per_page - 1) // per_page
+        current_page = 1
+        start = (current_page - 1) * per_page
+        end = start + per_page
+        jobapplications = jobapplications[start:end]
+
+        # Return success message
+        return render_template(
+            "home.html",
+            success="Resume replaced successfully!",
+            upcoming_events=[],
+            user=user,
+            jobapplications=jobapplications,
+            current_page=current_page,
+            total_pages=total_pages,
+        )
+
+    except Exception as e:
+        jobapplications = get_job_applications(database)
+        per_page = 5
+        total_jobs = len(jobapplications)
+        total_pages = (total_jobs + per_page - 1) // per_page
+        current_page = 1
+        start = (current_page - 1) * per_page
+        end = start + per_page
+        jobapplications = jobapplications[start:end]
+
+        return render_template(
+            "home.html",
+            error=f"An error occurred: {str(e)}",
+            upcoming_events=[],
+            user=user,
+            jobapplications=jobapplications,
+            current_page=current_page,
+            total_pages=total_pages,
+        )
 
 @app.route('/student/analyze_resume', methods=['GET'])
 def view_ResumeAna():
@@ -625,9 +732,6 @@ def display():
         user_id = request.form['user_id']
         user = find_user(str(user_id), database)
         return render_template('home.html', data=None, upcoming_events=[], user=user, jobapplications=[], current_page=1, total_pages=1)
-
-
-
 
 @app.route('/chat_gpt_analyzer/', methods=['GET'])
 def chat_gpt_analyzer():
