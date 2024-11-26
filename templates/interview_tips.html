@@ -1,0 +1,43 @@
+{% extends "layout/nav_bar.html" %}
+
+{% block title %}Interview Tips - WolfTrack{% endblock %}
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            color: #da2d2d; /* Primary color for headings */
+            margin-top: 20px;
+        }
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px auto;
+            color: #555; /* Subtle secondary color for text */
+        }
+        iframe {
+            display: block;
+            margin: 20px auto;
+            border: 5px solid #da2d2d; /* Frame border matching primary color */
+            border-radius: 10px;
+        }
+    </style>
+<div class="container">
+<h1>Expert Interview Tips</h1>
+<p>Watch the video below to learn how to ace your interviews!</p>
+<iframe width="560" height="315"
+        src="https://www.youtube.com/embed/HG68Ymazo18"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen>
+</iframe>
+</div>
+{% endblock %}

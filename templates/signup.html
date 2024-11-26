@@ -161,14 +161,23 @@
                 <div class="mb-4">
                     {{ form.name.label(class="block text-gray-700 text-sm font-bold mb-2") }}
                     {{ form.name(class="input-field", required=True) }}
+                    {% if form.name.errors %}
+                        <div class="text-red-600 text-sm">{{ form.name.errors[0] }}</div>
+                    {% endif %}
                 </div>
                 <div class="mb-4">
                     {{ form.username.label(class="block text-gray-700 text-sm font-bold mb-2") }}
                     {{ form.username(class="input-field", required=True) }}
+                    {% if form.username.errors %}
+                        <div class="text-red-600 text-sm">{{ form.username.errors[0] }}</div>
+                    {% endif %}
                 </div>
                 <div class="mb-4">
                     {{ form.password.label(class="block text-gray-700 text-sm font-bold mb-2") }}
                     {{ form.password(class="input-field", type="password", required=True) }}
+                    {% if form.password.errors %}
+                        <div class="text-red-600 text-sm">{{ form.password.errors[0] }}</div>
+                    {% endif %}
                 </div>
                 <div class="mb-4">
                     {{ form.usertype.label(class="block text-gray-700 text-sm font-bold mb-2") }}

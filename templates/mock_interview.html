@@ -1,0 +1,61 @@
+{% extends "layout/nav_bar.html" %}
+
+{% block title %}Mock Interview Practice{% endblock %}
+{% block content %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f7f9fc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        h1 {
+            text-align: center;
+            color: #da2d2d; /* Primary color for headings */
+            margin-top: 20px;
+        }
+        p {
+            text-align: center;
+            font-size: 18px;
+            margin: 20px auto;
+            color: #555; /* Subtle secondary color for text */
+        }
+        iframe {
+            display: block;
+            margin: 20px auto;
+            border: 5px solid #da2d2d; /* Frame border matching primary color */
+            border-radius: 10px;
+        }
+
+        /* Specific styles for interview practice list */
+        .practice-list {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .practice-list li {
+            background-color: #e3f2fd; /* Light blue background for list items */
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            color: #333;
+            font-size: 16px;
+        }
+     </style>
+
+    <div class="container-job">
+<h1>Mock Interview Practice</h1>
+<p>Practice these scenarios to sharpen your interview skills!</p>
+<ul class="practice-list">
+    <li>Introduce yourself in under 2 minutes.</li>
+    <li>Explain a challenging project you've worked on.</li>
+    <li>Describe a time you handled a difficult situation at work.</li>
+    <li>Answer common behavioral questions like, "Why should we hire you?"</li>
+    <li>Simulate a technical problem-solving discussion with a friend.</li>
+</ul>
+    </div>
+        {% endblock %}

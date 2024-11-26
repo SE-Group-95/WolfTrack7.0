@@ -6,8 +6,7 @@
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 [![Build Status](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/build_repo.yml/badge.svg)](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/build_repo.yml)
 [![Manual Build](https://img.shields.io/github/actions/workflow/status/se2024-jpg/WolfTrack6.0/main.yml)](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/main.yml)
-<!-- [![codecov](https://codecov.io/gh/nehajaideep/WolfTrack3.0/branch/Group10StableBranch/graph/badge.svg?token=0Q36G2YQC6)](https://codecov.io/gh/nehajaideep/WolfTrack3.0) -->
-[![codecov](https://codecov.io/gh/se2024-jpg/WolfTrack6.0/graph/badge.svg?token=ATXP4UPT2G)](https://codecov.io/gh/se2024-jpg/WolfTrack6.0)
+[![codecov](https://codecov.io/gh/SE-Group-95/WolfTrack7.0/branch/Features/graph/badge.svg?token=x5O6a1srek)](https://app.codecov.io/gh/SE-Group-95/WolfTrack7.0/tree/Features)
 ![GitHub language count](https://img.shields.io/github/languages/count/se2024-jpg/WolfTrack6.0)
 [![made-with-python](https://img.shields.io/badge/Made%20with-Python-1f425f.svg)](https://www.python.org/)
 [![Style Checker](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/style_checker.yml/badge.svg)](https://github.com/se2024-jpg/WolfTrack6.0/actions/workflows/style_checker.yml)

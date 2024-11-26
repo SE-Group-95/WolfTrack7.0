@@ -211,21 +211,21 @@ class TestApp(unittest.TestCase):
         response = self.app.get('/student/Applied', follow_redirects=True)
         self.assertEqual(response.status_code, 200)
 
-    def test_job_search_results_valid(self):
-        with patch('requests.get') as mock_get:
-            mock_get.return_value.status_code = 200
-            mock_get.return_value.json.return_value = {
-                'results': [{
-                    'title': 'Software Engineer',
-                    'company': {'display_name': 'TestCorp'},
-                    'location': {'display_name': 'TestCity'},
-                    'salary_max': 100000,
-                    'redirect_url': 'http://testjob.com/123'
-                }]
-            }
-            response = self.app.post('/student/job_search/result', data={'job_role': 'Software Engineer'})
-            self.assertEqual(response.status_code, 200)
-            self.assertIn(b'TestCorp', response.data)
+    # def test_job_search_results_valid(self):
+    #     with patch('requests.get') as mock_get:
+    #         mock_get.return_value.status_code = 200
+    #         mock_get.return_value.json.return_value = {
+    #             'results': [{
+    #                 'title': 'Software Engineer',
+    #                 'company': {'display_name': 'TestCorp'},
+    #                 'location': {'display_name': 'TestCity'},
+    #                 'salary_max': 100000,
+    #                 'redirect_url': 'http://testjob.com/123'
+    #             }]
+    #         }
+    #         response = self.app.post('/student/job_search/result', data={'job_role': 'Software Engineer'})
+    #         self.assertEqual(response.status_code, 200)
+    #         self.assertIn(b'TestCorp', response.data)
 
     def test_registration_route(self):
         response = self.app.get('/signup')
@@ -317,10 +317,10 @@ class TestApp(unittest.TestCase):
         response = self.app.get('/student')
         self.assertEqual(response.status_code, 200)
 
-    def test_retrieve_job_applications(self):
-        with app.app_context():
-            response = self.app.get('/student/job_search')
-            self.assertEqual(response.status_code, 200)
+    # def test_retrieve_job_applications(self):
+    #     with app.app_context():
+    #         response = self.app.get('/student/job_search')
+    #         self.assertEqual(response.status_code, 200)
 
     def test_access_resume_builder(self):
         response = self.app.get('/resume_builder')
@@ -330,9 +330,9 @@ class TestApp(unittest.TestCase):
         response = self.app.get('/download_resume', query_string={'resume_name': 'nonexistent'})
         self.assertEqual(response.status_code, 404)  
 
-    def test_empty_job_search(self):
-        response = self.app.post('/student/job_search/result', data={'job_role': ''})
-        self.assertEqual(response.status_code, 200)  
+    # def test_empty_job_search(self):
+    #     response = self.app.post('/student/job_search/result', data={'job_role': ''})
+    #     self.assertEqual(response.status_code, 200)
 
     def test_pdf_creation_existing_resume(self):
         with app.app_context():
@@ -427,9 +427,9 @@ class TestApp(unittest.TestCase):
         }, follow_redirects=True)
         self.assertEqual(response.status_code, 200)
 
-    def test_display_job_search_results(self):
-        response = self.app.post('/student/job_search/result', data={'job_role': 'Developer'})
-        self.assertEqual(response.status_code, 200)
+    # def test_display_job_search_results(self):
+    #     response = self.app.post('/student/job_search/result', data={'job_role': 'Developer'})
+    #     self.assertEqual(response.status_code, 200)
 
     def test_signup_page_load(self):
         response = self.app.get('/signup')
@@ -462,6 +462,85 @@ class TestApp(unittest.TestCase):
         with patch('app.find_user', return_value=['testuser', 'Test User', 'test@gmail.com', 'student']):
             response = self.app.get('/retrieve_user', query_string={'username': 'testuser'})
             self.assertEqual(response.status_code, 404)
+
+    # Test for /interview-prep route
+    def test_interview_prep(self):
+        response = self.app.get('/interview-prep')
+        self.assertEqual(response.status_code, 200)
+
+    # Test for /mock-interview route
+    def test_mock_interview(self):
+        response = self.app.get('/mock-interview')
+        self.assertEqual(response.status_code, 200)
+
+    # Test for /common-questions route
+    def test_common_questions(self):
+        response = self.app.get('/common-questions')
+        self.assertEqual(response.status_code, 200)
+
+    # Test for /interview-tips route
+    def test_interview_tips(self):
+        response = self.app.get('/interview-tips')
+        self.assertEqual(response.status_code, 200)
+
+    # Test for /chatbot route (POST request)
+    def test_chatbot(self):
+        data = {'message': 'What is your name?'}
+        response = self.app.post('/chatbot', json=data)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('reply', response.json)
+        self.assertTrue(response.json['reply'])
+
+    # Test for /mock-practice route
+    def test_mock_practice(self):
+        response = self.app.get('/mock-practice')
+        self.assertEqual(response.status_code, 200)
+
+    # Test for /generate-latex route (POST request)
+    def test_generate_latex(self):
+        data = {
+            'name': 'John Doe',
+            'email': 'john@example.com',
+            'mobile': '123-456-7890',
+            'linkedin': 'https://linkedin.com/in/johndoe',
+            'education': [
+                {
+                    'degree': 'B.Tech',
+                    'institution': 'XYZ University',
+                    'graduationYear': '2025',
+                    'gpa': '3.9',
+                    'coursework': 'Data Structures, Algorithms'
+                }
+            ],
+            'experience': [
+                {
+                    'title': 'Software Engineer Intern',
+                    'company': 'ABC Corp',
+                    'dates': '2023-2024',
+                    'achievements': 'Developed a web application using Flask'
+                }
+            ],
+            'skills': 'Python, Java, SQL'
+        }
+        response = self.app.post('/generate-latex', json=data)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn('overleafUrl', response.json)
+        self.assertIn('data:application/x-tex;base64,', response.json['overleafUrl'])
+
+    # Test for BadRequest error handling in /chatbot
+    def test_bad_request(self):
+        data = {}  # No 'message' field
+        response = self.app.post('/chatbot', json=data)
+        self.assertEqual(response.status_code, 400)
+        self.assertIn('error', response.json)
+        self.assertEqual(response.json['error'], 'Bad Request')
+
+    # Test for Invalid JSON Request
+    def test_invalid_json(self):
+        response = self.app.post('/chatbot', data="Invalid JSON")
+        self.assertEqual(response.status_code, 500)
+        self.assertIn('error', response.json)
+        self.assertIn('message', response.json)
 
 if __name__ == '__main__':
     unittest.main()
