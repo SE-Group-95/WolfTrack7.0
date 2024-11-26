@@ -73,10 +73,10 @@ def get_resume_score(text: list) -> str:
     """Calculate similarity score between resume and job description."""
     cv = CountVectorizer(stop_words='english')
     count_matrix = cv.fit_transform(text)
-    if type(count_matrix) != str:
-        match_percentage = cosine_similarity(count_matrix.toarray())[0][1] * 100
-        return f"Your resume matches about {round(match_percentage + 50, 2)}% of the job description."
-    return f"Error getting job analytics!"
+    match_percentage = cosine_similarity(count_matrix.toarray())[0][1] * 100
+    # return f"Your resume matches about {round(match_percentage + 50, 2)}% of the job description."
+    return round(match_percentage + 50, 2)
+
 
 def resume_analyzer(jobtext: str, file: str) -> str:
     """Analyze a resume against a job description and generate insights."""
@@ -88,5 +88,5 @@ def resume_analyzer(jobtext: str, file: str) -> str:
         resume = read_word_resume(file)
 
     clean_jd = clean_job_description(jobtext)
-    create_word_cloud(clean_jd)
+    # create_word_cloud(clean_jd)
     return get_resume_score([resume, jobtext])

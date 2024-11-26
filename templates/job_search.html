@@ -84,16 +84,46 @@
             list-style: none;
             padding: 0;
         }
+        .job-header {
+            display: flex;
+            justify-content: space-between; /* Aligns job title and match percentage horizontally */
+            align-items: center;
+        }
+
+        .match-percentage {
+            color: white; /* Default text color */
+            font-weight: bold;
+            font-size: 14px;
+            padding: 4px 8px;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .high-match {
+            background-color: #28a745;
+        }
+
+        .medium-match {
+            background-color: #ffc107;
+            color: black;
+        }
+
+        .low-match {
+            background-color: #dc3545;
+        }
+
         .job-item {
-            background-color: #fff;
             margin-bottom: 10px;
             padding: 15px;
             border: 1px solid #ccc;
             border-radius: 8px;
+            background-color: #fff;
+            transition: background-color 0.3s ease;
             cursor: pointer;
         }
+
         .job-item:hover {
-            background-color: #f0f0f0;
+            background-color: #f9f9f9;
         }
         .right-panel {
             overflow-y: auto;
@@ -155,8 +185,15 @@
         <ul class="job-list">
             {% for job in jobs %}
             <li class="job-item" data-job-id="{{ job['job_id'] }}" tabindex="0">
-                <strong>{{ job['job_title'] }}</strong><br>
-                {{ job['employer_name'] }} | {{ job['job_location'] }}
+                <div class="job-header">
+                    <strong>{{ job['job_title'] }}</strong>
+                    <span class="match-percentage {{ job['match_class'] }}">
+                        {{ job['match_percentage'] }}%
+                    </span>
+                </div>
+                <div class="job-details">
+                    {{ job['employer_name'] }} | {{ job['job_location'] }}
+                </div>
             </li>
             {% endfor %}
         </ul>
