@@ -663,8 +663,9 @@ def chat_gpt_analyzer():
         section_names = ['Education', 'Experience','Skills', 'Projects']
         sections[0] = sections[0][3:]
         sections[1] = sections[1][3:]
-        sections[2] = sections[2][3:]
-        sections[3] = sections[3][3:]
+        if len(sections) > 2:
+            sections[2] = sections[2][3:]
+            sections[3] = sections[3][3:]
         return render_template('chat_gpt_analyzer.html', suggestions=sections, pdf_path=pdf_path, section_names = section_names)
 
 
@@ -762,56 +763,58 @@ def job_details(job_id):
 
 
 #Deprecated
-@app.route('/student/job_search/result', methods=['POST'])
-def search():
-    job_role = request.form['job_role']
-    adzuna_url = f"https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=575e7a4b&app_key=35423835cbd9428eb799622c6081ffed&what_phrase={job_role}"
-    try:
-        response = requests.get(adzuna_url)
-        if response.status_code == 200:
-            data = response.json()
-            jobs = data.get('results', [])
-            return render_template('job_search_results.html', jobs=jobs)
-        else:
-            return "Error fetching job listings"
-    except requests.RequestException as e:
-        logging.error(f"Error fetching job listings: {e}")
-        return "An internal error has occurred while fetching job listings."
 
-@app.route('/findJobs')
-def find_jobs():
-    files = os.listdir(os.getcwd()+'/Controller/resume')
-    if not files:
-        flash('No resumes available to analyze.', 'error')
-        return redirect(url_for('index'))
 
-    pdf_path = os.getcwd() + '//Controller/resume/' + files[0]
-    text_path = os.getcwd() + '//Controller/temp_resume/' + files[0][:-3] + 'txt'
-    pdf_to_text(pdf_path, text_path)
-    job_roles = extract_top_job_roles(text_path)
-
-    if job_roles is None:
-        flash('Failed to extract job roles from resume.', 'error')
-        return redirect(url_for('index'))
-
-    print(f"Recommended Job Roles: {job_roles}")
-
-    job_query = ','.join(job_roles).replace(' ', '%20')
-    adzuna_url = f"https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=575e7a4b&app_key=35423835cbd9428eb799622c6081ffed&what_or={job_query}"
-
-    try:
-        response = requests.get(adzuna_url)
-        if response.status_code == 200:
-            data = response.json()
-            jobs = data.get('results', [])
-            return render_template('job_recommendation_results.html', jobs=jobs)
-        else:
-            flash('Error fetching job listings from Adzuna.', 'error')
-    except requests.RequestException as e:
-        logging.error(f"Error fetching job listings from Adzuna: {e}")
-        flash('An internal error has occurred while fetching job listings from Adzuna.', 'error')
-
-    return redirect(url_for('index'))
+# @app.route('/student/job_search/result', methods=['POST'])
+# def search():
+#     job_role = request.form['job_role']
+#     adzuna_url = f"https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=575e7a4b&app_key=35423835cbd9428eb799622c6081ffed&what_phrase={job_role}"
+#     try:
+#         response = requests.get(adzuna_url)
+#         if response.status_code == 200:
+#             data = response.json()
+#             jobs = data.get('results', [])
+#             return render_template('job_search_results.html', jobs=jobs)
+#         else:
+#             return "Error fetching job listings"
+#     except requests.RequestException as e:
+#         logging.error(f"Error fetching job listings: {e}")
+#         return "An internal error has occurred while fetching job listings."
+#### Update below code
+# @app.route('/findJobs')
+# def find_jobs():
+#     files = os.listdir(os.getcwd()+'/Controller/resume')
+#     if not files:
+#         flash('No resumes available to analyze.', 'error')
+#         return redirect(url_for('index'))
+#
+#     pdf_path = os.getcwd() + '//Controller/resume/' + files[0]
+#     text_path = os.getcwd() + '//Controller/temp_resume/' + files[0][:-3] + 'txt'
+#     pdf_to_text(pdf_path, text_path)
+#     job_roles = extract_top_job_roles(text_path)
+#
+#     if job_roles is None:
+#         flash('Failed to extract job roles from resume.', 'error')
+#         return redirect(url_for('index'))
+#
+#     print(f"Recommended Job Roles: {job_roles}")
+#
+#     job_query = ','.join(job_roles).replace(' ', '%20')
+#     adzuna_url = f"https://api.adzuna.com/v1/api/jobs/us/search/1?app_id=575e7a4b&app_key=35423835cbd9428eb799622c6081ffed&what_or={job_query}"
+#
+#     try:
+#         response = requests.get(adzuna_url)
+#         if response.status_code == 200:
+#             data = response.json()
+#             jobs = data.get('results', [])
+#             return render_template('job_recommendation_results.html', jobs=jobs)
+#         else:
+#             flash('Error fetching job listings from Adzuna.', 'error')
+#     except requests.RequestException as e:
+#         logging.error(f"Error fetching job listings from Adzuna: {e}")
+#         flash('An internal error has occurred while fetching job listings from Adzuna.', 'error')
+#
+#     return redirect(url_for('index'))
 
 
 

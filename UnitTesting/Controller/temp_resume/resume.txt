@@ -1,0 +1,59 @@
+Shreya Vaidya  
+919-559-5203 | US Citizen |  svaidya6@ncsu.edu  | linkedin.com/ in/shreya -vaidya  | bit.ly /shreya -vaidya  | Raleigh, NC 
+EDUCATIO N 
+North Carolina State University , Raleigh, NC  | Master  of Computer Science            August 2023 - May 202 5 (Expected ) 
+Courses: Software Engineering, Design and Analysis of Algorithms, Object Oriented Design and Development    
+ 
+College of Engineering, Pune, India  | Bachelor of Technology in Computer Engineering                 August 2019 - May 20 23 
+Courses: Database Management Systems, Data Structures and Algorithms, Information Retrieval                             GPA:8. 51/10 
+ 
+TECHNICAL SKILLS  
+Programming Languages:  JavaScript, TypeScript, Python, C/C++  
+Frameworks and Tools: React, Angular, React Native, Express, FastAPI, Jenkins, Docker  
+Databases : MongoDB, MySQL  
+ 
+WORK EXPERIENCE  
+Citibank,  Software Engineer Intern,  Pune, India                                                             May 202 2 - July 2022                                                 
+• Developed a process automation tool in Angular used to track the productivity of teams and manage vendor resources in 
+the   Payment and Receivables business unit.  Enhanced task success rate by 36%.  
+• Automated the deployment of the application to OpenShift using a Jenkins pipeline  and reduced cycle time by 12% . 
+ 
+PROJECTS  
+  Deepfake Detection using Computer Vision – GitHub Link  
+• Built a novel solution to identify synthetically generated videos created with the intent to spread misleading information or  
+defamation.  
+• Developed a full -stack video streaming platform for authentic content in React integrated with the proposed Masked Image 
+Modelling and Vision Transformer model built in PyTorch.  
+• Devised  a Discord bo t in Python  to flag deepfakes and send out an alert to all members in the server.  
+ 
+Mobile Application for Image based Calorie Tracking – GitHub Link  
+• Designed a user -friendly application targeted towards fitness enthusiasts wanting to log their daily food intake and calories.  
+• Developed a mobile application in React Native  that allows users to log their daily food intake using a camera, track  
+nutrient specific breakdown of food items and set daily and weekly goals for calories consumed.  
+ 
+Progressive Web Application for Inventory Management – Deployed Application  
+• Developed and deployed a Progressive Web Application (PWA) using React, Express, Node and MongoDB for a 
+construction company to solve the problems of data monitoring, maintaining a daily progress report and documentation.  
+ 
+Version Control System – GitHub Link  
+• Designed and developed a system in C that records changes to a file or set of files over time so that  
+a user can recall specific versions later on their local machine.  
+• Implemented and applied UNIX commands diff and patch.  
+ 
+Time Table Generator based on  Constraint Satisfaction Problem – GitHub Link  
+• Designed a dynamic system that schedules the slots and the teachers for a particular subject and day according to given 
+constraints by modelling a Constraint Satisfaction Problem (AI).  
+• Developed a full -stack application in React and FastAPI which efficiently generates a timetable based on the availability 
+entered by teachers.  
+ 
+POSITIONS OF RESPONSIBILITY            
+• In charge of the overall functioning of the Computer Society of India , COEP as the student chapter’s President , comprising 
+200+ members, including technical events and initiatives  such as national level hackathons and competitive coding 
+competitions . 
+• Contributed to the end-to-end development of various software products , aligned projects with client requirements, 
+constructed detailed work plans, managed teams, and ensure d timely delivery of the product at Software Development 
+Section, COEP .  
+ 
+EXTRACURICU LARS            
+• Selected as a finalist in the Smart India Hackathon  for the problem statement - Promoting Fitness using Gamification by 
+the Department of Sports (DoS) and Ministry of Youth Affairs Sports, India.   

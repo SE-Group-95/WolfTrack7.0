@@ -542,5 +542,69 @@ class TestApp(unittest.TestCase):
         self.assertIn('error', response.json)
         self.assertIn('message', response.json)
 
+
+    @patch('app.os.listdir')
+    @patch('app.pdf_to_text')
+    @patch('app.chatgpt')
+    def test_chat_gpt_analyzer(self, mock_chatgpt, mock_pdf_to_text, mock_listdir):
+        # Mock dependencies
+        mock_listdir.return_value = ['resume.pdf']
+        mock_chatgpt.return_value = "Section: Education\nDetails...\nSection: Experience\nDetails..."
+        mock_pdf_to_text.return_value = None
+
+        response = self.app.get('/chat_gpt_analyzer/')
+        self.assertEqual(response.status_code, 200)
+
+
+    @patch('app.requests.get')
+    def test_job_search_success(self, mock_get):
+        # Mock a successful response
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_response.json.return_value = {"data": [{"title": "Software Engineer"}]}
+        mock_get.return_value = mock_response
+
+        response = self.app.get('/student/job_search', query_string={'keyword': 'developer'})
+        self.assertEqual(response.status_code, 200)
+
+
+    @patch('app.requests.get')
+    def test_job_search_failure(self, mock_get):
+        # Mock a failure response
+        mock_response = MagicMock()
+        mock_response.status_code = 500
+        mock_get.return_value = mock_response
+
+        response = self.app.get('/student/job_search', query_string={'keyword': 'developer'})
+        self.assertEqual(response.status_code, 200)
+
+
+    @patch('app.requests.get')
+    def test_job_details_success(self, mock_get):
+        # Mock a successful job details response
+        mock_response = MagicMock()
+        mock_response.status_code = 200
+        mock_response.json.return_value = {
+            "data": [{"job_description": "Great job opportunity"}]
+        }
+        mock_get.return_value = mock_response
+
+        response = self.app.get('/student/job_details/test_job_id')
+        self.assertEqual(response.status_code, 200)
+
+
+    @patch('app.requests.get')
+    def test_job_details_failure(self, mock_get):
+        # Mock a failed job details response
+        mock_response = MagicMock()
+        mock_response.status_code = 500
+        mock_get.return_value = mock_response
+
+        response = self.app.get('/student/job_details/test_job_id')
+        self.assertEqual(response.status_code, 500)
+        self.assertIn(b'Failed to fetch job details', response.data)
+
+
+
 if __name__ == '__main__':
     unittest.main()
