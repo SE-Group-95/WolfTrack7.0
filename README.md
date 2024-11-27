@@ -16,7 +16,7 @@
 [![GitHub-size](https://img.shields.io/github/repo-size/SE-Group-95/WolfTrack7.0)](https://github.com/SE-Group-95/WolfTrack7.0)
 [![GitHub issues](https://img.shields.io/github/issues/SE-Group-95/WolfTrack7.0)](https://github.com/SE-Group-95/WolfTrack7.0/issues)
 [![GitHub-closed-issues](https://img.shields.io/github/issues-closed/SE-Group-95/WolfTrack7.0)](https://github.com/SE-Group-95/WolfTrack7.0/issues?q=is%3Aissue+is%3Aclosed)
-![Last Commit](https://img.shields.io/github/last-commit/SE-Group-95/WolfTrack7.0)
+
 
 
 
