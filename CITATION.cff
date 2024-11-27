@@ -1,10 +1,26 @@
-Repository-code: https://github.com/SE-Group-95/WolfTrack7.0
-
-version: 6.1.0
+cff-version: 1.2.0
+message: >
+  If you use this software, please cite it using the following metadata.
+title: "WolfTrack7.0"
+version: "7.1"
 authors:
-  - Girish G N
-  - Joel Jogy George
-  - Pravallika Vasireddy
-
-
-License: MIT License
+  - family-names: Gotmare
+    given-names: Mayur
+    github: "MayurG26"
+  - family-names: Navale
+    given-names: Prachi
+    github: "prachinav"
+  - family-names: Gandhi
+    given-names: Sidharrth
+    github: "22SiD"
+date-released: 2024-11-26
+url: "https://github.com/SE-Group-95/WolfTrack7.0"
+repository-code: "https://github.com/SE-Group-95/WolfTrack7.0"
+abstract: >
+  WolfTrack7.0 is a collaborative software project that includes features such as HTTPS support, bug fixes, job match analytics, and enhanced test coverage. This version focuses on performance, reliability, and user experience improvements.
+keywords:
+  - WolfTrack
+  - Job Analytics
+  - Security
+  - Software Engineering
+license: "MIT" # Replace with your actual license
