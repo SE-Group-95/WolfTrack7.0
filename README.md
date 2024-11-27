@@ -2,7 +2,6 @@
 
 ---
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14027517.svg)](https://doi.org/10.5281/zenodo.14027517)
 [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 [![Manual Build](https://img.shields.io/github/actions/workflow/status/SE-Group-95/WolfTrack7.0/main.yml)](https://github.com/SE-Group-95/WolfTrack7.0/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/SE-Group-95/WolfTrack7.0/branch/Features/graph/badge.svg?token=x5O6a1srek)](https://app.codecov.io/gh/SE-Group-95/WolfTrack7.0/tree/Features)
