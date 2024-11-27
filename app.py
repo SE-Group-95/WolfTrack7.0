@@ -43,11 +43,10 @@ import requests
 from flask import Flask, request, jsonify, render_template
 from werkzeug.exceptions import BadRequest, InternalServerError
 from Controller.data import upcoming_events
+
+
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 API_URL = "https://api.openai.com/v1/chat/completions"
-
-
-
 
 # Load environment variables from .env file
 load_dotenv()
@@ -55,12 +54,14 @@ load_dotenv()
 app = Flask(__name__)
 bcrypt = Bcrypt(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI', "sqlite:///database.db")
-# Set the SECRET_KEY, with a fallback for testing environments
 app.config['SECRET_KEY'] = os.getenv('SECRET_KEY', 'default_testing_secret_key')
+
 RAPIDAPI_HOST = "jsearch.p.rapidapi.com"
-RAPIDAPI_KEY = "f74322c0e1mshd49f4255eb405b4p137b12jsnc6faec60fea3"
+RAPIDAPI_KEY = os.getenv("RAPIDAPI_KEY")
+
 UPLOAD_FOLDER = 'uploads/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 # Raise an error if the SECRET_KEY is missing in non-test environments
 if not app.config['SECRET_KEY'] and os.getenv('FLASK_ENV') != 'testing':
     raise ValueError("No SECRET_KEY set for Flask application")

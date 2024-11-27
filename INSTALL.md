@@ -85,18 +85,27 @@ If you downloaded Python `3.10.12` or any other version, follow these steps to s
 
 5. Once you have subscribed, obtain the **API key** from your RapidAPI dashboard.
 
-### 2. Update `app.py` with the API Key
 
-1. In your project directory, open the `app.py` file.
+### 2. Set Up the Environment Variable for the API Key
 
-2. Locate the part of the file where the API key is required. This will typically be in the headers of your API request.
+1. Export the API key to your environment variables:
 
-3. Replace the placeholder for the API key with your **JSearch API key**.
+    - On macOS/Linux:
+      ```bash
+      export RAPIDAPI_KEY="YOUR_RAPIDAPI_KEY"
+      ```
 
-    ```
-    RAPIDAPI_KEY
-    ```
-   
+    - On Windows (Command Prompt):
+      ```cmd
+      set RAPIDAPI_KEY="YOUR_RAPIDAPI_KEY"
+      ```
+
+    - On Windows (PowerShell):
+      ```powershell
+      $env:RAPIDAPI_KEY="YOUR_RAPIDAPI_KEY"
+      ```
+
+
 ### 3. Set up OpenAI API Key
 
 1. Sign up or log in to your [OpenAI account](https://platform.openai.com/signup/).

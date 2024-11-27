@@ -51,7 +51,10 @@ WolfTrack 7.0 is your ultimate destination for seamless organization and efficie
 
 We offer features like giving suggestions for improvements on your resume, tracking your application, and many more.
 
-Link to our Poster:  [Link](https://www.canva.com/design/DAGVKp8r6wY/V9NS6fGyN8Egj4PHvPCEaQ/view?utm_content=DAGVKp8r6wY&utm_campaign=designshare&utm_medium=link&utm_source=editor)
+[![Watch the video](https://img.youtube.com/vi/3TFaPggxtdA/maxresdefault.jpg)](https://www.youtube.com/watch?v=3TFaPggxtdA)
+
+## 📊 Project Poster
+Curious about our project? View our project poster showcasing key aspects of the system [here](https://www.canva.com/design/DAGVKp8r6wY/V9NS6fGyN8Egj4PHvPCEaQ/view?utm_content=DAGVKp8r6wY&utm_campaign=designshare&utm_medium=link&utm_source=editor).
 
 ---
 
@@ -212,6 +215,12 @@ We appreciate your interest and look forward to providing you with the best poss
 ## Funding
 
 This project currently receives no funding.
+
+---
+
+## 💬 Chat Channel
+
+![img.png](docs/img.png)
 
 ---
 
